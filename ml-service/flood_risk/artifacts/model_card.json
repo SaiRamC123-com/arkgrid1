@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "created_at": "2026-10-13T12:27:22.013416+00:00",
+  "trained_on": "synthetic heuristic labels (demo)",
+  "kind": "synthetic-heuristic",
+  "mode": "tier4",
+  "n_samples": 20000,
+  "features": [
+    "elevation_m",
+    "slope_deg",
+    "relief_m",
+    "height_above_low_m",
+    "soil_perm",
+    "rain_24h_mm",
+    "rain_1h_mm"
+  ],
+  "class_balance": {
+    "0": 11140,
+    "1": 5765,
+    "2": 2623,
+    "3": 472
+  },
+  "tier_thresholds": null,
+  "holdout": {
+    "n_test": 4000,
+    "accuracy": 0.86,
+    "within_one_tier": 1.0
+  },
+  "holdout_note": "Agreement with the SYNTHETIC heuristic on held-out synthetic samples. Not real-world accuracy.",
+  "validated_against_real_events": false
+}

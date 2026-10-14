@@ -1,0 +1,9 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Uploads happen server-side. Photos are served through unguessable download-token URLs.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

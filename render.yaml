@@ -1,0 +1,47 @@
+services:
+  # ArkGrid Node.js API Server
+  - type: web
+    name: arkgrid-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        sync: false
+        # e.g. https://your-app.vercel.app
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
+        # Raw JSON or base64 encoded service account key
+      - key: FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: GROQ_VISION_MODEL
+        value: qwen/qwen3.6-27b
+      - key: RESPONDER_CODE
+        value: ARK-RESP-2026
+      - key: COMMANDER_CODE
+        value: ARK-CMD-2026
+      - key: ML_SERVICE_URL
+        sync: false
+        # e.g. https://your-ml-service.onrender.com
+      - key: ML_API_KEY
+        sync: false
+
+  # ArkGrid Python FastAPI ML Service (Already deployed or blueprint reference)
+  - type: web
+    name: arkgrid-ml-service
+    runtime: python
+    rootDir: ml-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: ML_API_KEY
+        sync: false

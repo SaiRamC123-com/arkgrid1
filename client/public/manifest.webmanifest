@@ -1,0 +1,9 @@
+{
+  "name": "ArkGrid | Flood Response Intelligence",
+  "short_name": "ArkGrid",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070B1F",
+  "theme_color": "#070B1F",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
