@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { Package, ArrowRight } from "lucide-react";
+import { Package } from "lucide-react";
 import GlassCard from "../ui/GlassCard";
 import Badge from "../ui/Badge";
 import { RES_META } from "../shelters/shelterMeta";
@@ -12,7 +11,6 @@ export default function LogisticsGlance({ shelters }) {
     <GlassCard>
       <div className="flex items-center gap-2">
         <h3 className="flex items-center gap-2 font-display text-lg font-semibold"><Package size={19} className="text-indigo-300" /> Facilities and supplies</h3>
-        <Link to="/command/shelters" className="ml-auto flex items-center gap-1 text-xs font-semibold text-ark-cyan hover:underline">Open <ArrowRight size={13} /></Link>
       </div>
 
       <div className="mt-4 grid grid-cols-4 gap-2 text-center">

@@ -1,6 +1,6 @@
 import L from "leaflet";
 import { MapContainer, Polygon, Marker, Tooltip, Polyline, CircleMarker } from "react-leaflet";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/Mapkit";
 import { ZONE_STYLE } from "./searchMeta";
 
 const lklIcon = (active) =>

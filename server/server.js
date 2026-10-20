@@ -44,6 +44,8 @@ app.use("/api/sim", require("./routes/simRoutes"));
 app.use("/api/safety", require("./routes/safetyRoutes"));
 app.use("/api/advisories", require("./routes/advisoryRoutes"));
 app.use("/api/logistics", require("./routes/logisticsRoutes"));
+app.use("/api/observations", require("./routes/observationRoutes"));
+app.use("/api/weather", require("./routes/weatherRoutes"));
 if (process.env.NODE_ENV !== "production") {
   app.get("/api/debug/reports", (req, res) => {
     const ctrl = require("./controllers/reportController");

@@ -5,6 +5,7 @@ const c = require("../controllers/shelterController");
 
 router.use(verifyToken);
 
+router.get("/nearby", c.nearby);
 router.get("/", c.list); // every signed-in role
 
 const manage = roleGuard("responder", "commander");

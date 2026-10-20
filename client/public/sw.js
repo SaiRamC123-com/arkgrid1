@@ -77,8 +77,11 @@ self.addEventListener("fetch", (e) => {
     );
     return;
   }
-
-  if (url.hostname.endsWith("basemaps.cartocdn.com") || url.hostname.endsWith("tile.openstreetmap.org")) {
+if (
+  url.hostname.endsWith("basemaps.cartocdn.com") ||
+  url.hostname.endsWith("tile.openstreetmap.org") ||
+  url.hostname === "api.maptiler.com"
+) {
     e.respondWith(cacheFirst(req, TILES, MAX_TILES));
     return;
   }

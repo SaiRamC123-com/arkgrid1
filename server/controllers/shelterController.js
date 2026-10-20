@@ -1,5 +1,6 @@
 const { admin, db, FieldValue, Timestamp } = require("../config/firebaseAdmin");
-const { validCoords } = require("../utils/geo");
+const { distanceM, validCoords } = require("../utils/geo");
+const { nearbyFacilities } = require("../services/openStreetMap");
 
 const TYPES = ["shelter", "hospital", "relief"];
 const RES_KEYS = ["water", "food", "medical", "power"];
@@ -19,6 +20,8 @@ const shape = (d) => {
 
   return {
     id: d.id,
+    source: "arkgrid",
+    sourceName: "ArkGrid facility registry",
     type: s.type,
     name: s.name,
     address: s.address || "",
@@ -103,6 +106,37 @@ exports.list = async (req, res, next) => {
   try {
     const snap = await db.collection("shelters").limit(500).get();
     res.json({ shelters: snap.docs.map(shape) });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.nearby = async (req, res, next) => {
+  try {
+    const lat = Number(req.query.lat);
+    const lng = Number(req.query.lng);
+    const radiusM = Number(req.query.radiusM ?? 10000);
+    if (!validCoords(lat, lng)) throw httpError(400, "A valid location is required");
+    if (!Number.isFinite(radiusM) || radiusM < 1000 || radiusM > 25000) {
+      throw httpError(400, "Nearby search radius must be between 1 and 25 km");
+    }
+
+    const snap = await db.collection("shelters").limit(500).get();
+    const registered = snap.docs
+      .map(shape)
+      .filter((s) => validCoords(s.lat, s.lng) && distanceM({ lat, lng }, s) <= radiusM);
+    const registeredNames = new Set(registered.map((s) => s.name.trim().toLowerCase()));
+    let mapped = [];
+    let sourceError = null;
+    try {
+      mapped = (await nearbyFacilities(lat, lng, radiusM))
+        .filter((s) => !registeredNames.has(s.name.trim().toLowerCase()));
+    } catch (err) {
+      console.warn("Nearby OpenStreetMap facility lookup failed:", err.message);
+      sourceError = "Community map data is unavailable right now. Showing ArkGrid-listed facilities only.";
+    }
+
+    res.json({ shelters: [...registered, ...mapped], sourceError });
   } catch (err) {
     next(err);
   }

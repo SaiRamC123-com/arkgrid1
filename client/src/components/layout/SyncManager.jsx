@@ -20,9 +20,11 @@ export default function SyncManager() {
     navigator.serviceWorker?.addEventListener("message", onMsg);
     const timer = setInterval(onVisible, 20000);
 
-    const offSynced = onSynced(() =>
-      toast.success("SOS delivered to your circle and responders", { icon: "🚨", duration: 6000 })
-    );
+    const offSynced = onSynced(({ item }) =>
+  item.type === "report"
+    ? toast.success("Your saved report was received by ArkGrid", { icon: "📍", duration: 5000 })
+    : toast.success("Your saved SOS was received by ArkGrid. Delivery to responders is not confirmed.", { icon: "🚨", duration: 7000 })
+);
     const offDropped = onDropped(({ message }) => toast.error(message || "A queued SOS was rejected"));
 
     return () => {

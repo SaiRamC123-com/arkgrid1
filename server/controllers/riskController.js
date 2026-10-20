@@ -1,6 +1,7 @@
 const { db } = require("../config/firebaseAdmin");
 const { validCoords } = require("../utils/geo");
 const { getRisk } = require("../services/riskService");
+const { getFloodMonitoring } = require("../services/floodMonitoringService");
 const ml = require("../services/mlClient");
 
 const STALE_MS = 12 * 3600 * 1000;
@@ -77,5 +78,13 @@ exports.model = async (req, res, next) => {
     res.json(await ml.modelCard());
   } catch (err) {
     next(httpError(503, "The flood-risk model service is offline."));
+  }
+};
+
+exports.monitor = async (req, res, next) => {
+  try {
+    res.json(await getFloodMonitoring(req.body || {}));
+  } catch (err) {
+    next(err);
   }
 };

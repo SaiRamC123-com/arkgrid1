@@ -12,6 +12,28 @@ import api from "../services/api";
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
+async function loadProfile(user) {
+  try {
+    const { data } = await api.get("/api/auth/me");
+    try {
+      localStorage.setItem(`ark_profile_${user.uid}`, JSON.stringify(data.user));
+    } catch (cacheError) {
+      console.warn("Could not cache the signed-in profile for offline use:", cacheError);
+    }
+    return data.user;
+  } catch (err) {
+    if (!err?.response) {
+      try {
+        const cached = JSON.parse(localStorage.getItem(`ark_profile_${user.uid}`));
+        if (cached?.uid === user.uid && cached?.role && cached?.name) return cached;
+      } catch (cacheError) {
+        console.warn("Could not read the cached signed-in profile:", cacheError);
+      }
+    }
+    throw err;
+  }
+}
+
 export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,9 +49,9 @@ export function AuthProvider({ children }) {
       }
       setLoading(true);
       try {
-        const { data } = await api.get("/api/auth/me");
-        setProfile(data.user);
-      } catch {
+        setProfile(await loadProfile(user));
+      } catch (err) {
+        console.error("Failed to load the signed-in user's profile:", err);
         setProfile(null);
       } finally {
         setLoading(false);

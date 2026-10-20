@@ -1,6 +1,6 @@
 import L from "leaflet";
 import { MapContainer, Marker, Tooltip, Polyline, CircleMarker, Circle } from "react-leaflet";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/Mapkit";
 import SimLayer from "../sim/SimLayer";
 import { TEAM_STATUS, TEAM_TYPES } from "../ops/opsMeta";
 import { ROAD_STATUS } from "../roads/roadMeta";

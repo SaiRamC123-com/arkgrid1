@@ -4,7 +4,7 @@ import BotAvatar from "./BotAvatar";
 const inline = (t) =>
   t.split(/(\*\*[^*]+\*\*)/g).map((p, i) =>
     p.startsWith("**") && p.endsWith("**") && p.length > 4
-      ? <strong key={i} className="font-semibold text-white">{p.slice(2, -2)}</strong>
+      ? <strong key={i} className="font-semibold">{p.slice(2, -2)}</strong>
       : p
   );
 
@@ -41,7 +41,7 @@ export default function MessageBubble({ m, typing }) {
           ? "rounded-br-md bg-gradient-to-r from-ark-indigo to-ark-cyan text-white"
           : m.error
             ? "rounded-bl-md border border-ark-coral/40 bg-ark-coral/10 text-ark-coral"
-            : "glass rounded-bl-md text-slate-200"
+            : "glass rounded-bl-md text-slate-700"
       }`}>
         {typing ? (
           <span className="flex gap-1.5 py-1.5">

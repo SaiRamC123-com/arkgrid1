@@ -1,7 +1,8 @@
 const tones = {
-  indigo: "bg-ark-indigo/15 text-indigo-300 border-ark-indigo/40",
-  cyan: "bg-ark-cyan/15 text-ark-cyan border-ark-cyan/40",
-  coral: "bg-ark-coral/15 text-ark-coral border-ark-coral/40",
+  indigo: "bg-blue-50 text-blue-800 border-blue-200",
+  cyan: "bg-cyan-50 text-cyan-800 border-cyan-200",
+  coral: "bg-red-50 text-red-800 border-red-200",
+  slate: "bg-slate-100 text-slate-700 border-slate-200",
 };
 
 export default function Badge({ children, tone = "indigo", className = "" }) {

@@ -1,0 +1,1026 @@
+[
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "isfinite",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Literal",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "DBSCAN",
+        "importPath": "sklearn.cluster",
+        "description": "sklearn.cluster",
+        "isExtraImport": true,
+        "detail": "sklearn.cluster",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "HistGradientBoostingClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "httpx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "httpx",
+        "description": "httpx",
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "M_LAT",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "M_LNG",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "build_grid",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "get_elevation",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "build_grid",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "derive",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "get_elevation",
+        "importPath": "flood_risk.terrain",
+        "description": "flood_risk.terrain",
+        "isExtraImport": true,
+        "detail": "flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "ndimage",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "TIERS",
+        "importPath": "flood_risk.model",
+        "description": "flood_risk.model",
+        "isExtraImport": true,
+        "detail": "flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_model",
+        "importPath": "flood_risk.model",
+        "description": "flood_risk.model",
+        "isExtraImport": true,
+        "detail": "flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "predict",
+        "importPath": "flood_risk.model",
+        "description": "flood_risk.model",
+        "isExtraImport": true,
+        "detail": "flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_model",
+        "importPath": "flood_risk.model",
+        "description": "flood_risk.model",
+        "isExtraImport": true,
+        "detail": "flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherUnavailableError",
+        "importPath": "flood_risk.service",
+        "description": "flood_risk.service",
+        "isExtraImport": true,
+        "detail": "flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "assess",
+        "importPath": "flood_risk.service",
+        "description": "flood_risk.service",
+        "isExtraImport": true,
+        "detail": "flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherUnavailableError",
+        "importPath": "flood_risk.service",
+        "description": "flood_risk.service",
+        "isExtraImport": true,
+        "detail": "flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "assess",
+        "importPath": "flood_risk.service",
+        "description": "flood_risk.service",
+        "isExtraImport": true,
+        "detail": "flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_rain",
+        "importPath": "flood_risk.weather",
+        "description": "flood_risk.weather",
+        "isExtraImport": true,
+        "detail": "flood_risk.weather",
+        "documentation": {}
+    },
+    {
+        "label": "hmac",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hmac",
+        "description": "hmac",
+        "detail": "hmac",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "estimate",
+        "importPath": "search_zone.drift_model",
+        "description": "search_zone.drift_model",
+        "isExtraImport": true,
+        "detail": "search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "model_validator",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "HDBSCAN",
+        "importPath": "clustering.dbscan_model",
+        "description": "clustering.dbscan_model",
+        "isExtraImport": true,
+        "detail": "clustering.dbscan_model",
+        "documentation": {}
+    },
+    {
+        "label": "cluster_events",
+        "importPath": "clustering.dbscan_model",
+        "description": "clustering.dbscan_model",
+        "isExtraImport": true,
+        "detail": "clustering.dbscan_model",
+        "documentation": {}
+    },
+    {
+        "label": "simulate_rain",
+        "importPath": "simulator.flood_sim",
+        "description": "simulator.flood_sim",
+        "isExtraImport": true,
+        "detail": "simulator.flood_sim",
+        "documentation": {}
+    },
+    {
+        "label": "simulate_surge",
+        "importPath": "simulator.flood_sim",
+        "description": "simulator.flood_sim",
+        "isExtraImport": true,
+        "detail": "simulator.flood_sim",
+        "documentation": {}
+    },
+    {
+        "label": "cluster_events",
+        "kind": 2,
+        "importPath": "ml-service.clustering.dbscan_model",
+        "description": "ml-service.clustering.dbscan_model",
+        "peekOfCode": "def cluster_events(\n    events: List[dict], algorithm: str, eps_m: float, window_min: float, min_samples: int\n) -> Dict:\n    t0 = time.perf_counter()\n    n = len(events)\n    if n == 0:\n        return {\"clusters\": [], \"meta\": {\"algorithm\": algorithm, \"n_events\": 0, \"n_clusters\": 0, \"n_noise\": 0, \"ms\": 0}}\n    lat = np.array([e[\"lat\"] for e in events], dtype=float)\n    lng = np.array([e[\"lng\"] for e in events], dtype=float)\n    t = np.array([e[\"t\"] for e in events], dtype=float)",
+        "detail": "ml-service.clustering.dbscan_model",
+        "documentation": {}
+    },
+    {
+        "label": "M_PER_DEG_LAT",
+        "kind": 5,
+        "importPath": "ml-service.clustering.dbscan_model",
+        "description": "ml-service.clustering.dbscan_model",
+        "peekOfCode": "M_PER_DEG_LAT = 110540.0\nM_PER_DEG_LNG = 111320.0\ndef _embed(lat, lng, t, eps_m, window_min):\n    lat0, lng0 = float(np.mean(lat)), float(np.mean(lng))\n    kx = M_PER_DEG_LNG * math.cos(math.radians(lat0))\n    x = (lng - lng0) * kx\n    y = (lat - lat0) * M_PER_DEG_LAT\n    z = (t - t.min()) * (eps_m / (window_min * 60.0))\n    return np.column_stack([x, y, z]), x, y\ndef _fit(X, algorithm, eps_m, min_samples):",
+        "detail": "ml-service.clustering.dbscan_model",
+        "documentation": {}
+    },
+    {
+        "label": "M_PER_DEG_LNG",
+        "kind": 5,
+        "importPath": "ml-service.clustering.dbscan_model",
+        "description": "ml-service.clustering.dbscan_model",
+        "peekOfCode": "M_PER_DEG_LNG = 111320.0\ndef _embed(lat, lng, t, eps_m, window_min):\n    lat0, lng0 = float(np.mean(lat)), float(np.mean(lng))\n    kx = M_PER_DEG_LNG * math.cos(math.radians(lat0))\n    x = (lng - lng0) * kx\n    y = (lat - lat0) * M_PER_DEG_LAT\n    z = (t - t.min()) * (eps_m / (window_min * 60.0))\n    return np.column_stack([x, y, z]), x, y\ndef _fit(X, algorithm, eps_m, min_samples):\n    n = len(X)",
+        "detail": "ml-service.clustering.dbscan_model",
+        "documentation": {}
+    },
+    {
+        "label": "heuristic_index",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings\n    flat = np.clip(1 - slope / 8.0, 0, 1)      # water drains slowly on flat ground\n    terrain = 0.45 * low + 0.25 * pooling + 0.20 * flat + 0.10 * (1 - soil)\n    eff_rain = r24 * (1 - 0.6 * soil) + 2.0 * r1  # permeable soil absorbs part of the rain\n    rain = 1 - np.exp(-eff_rain / 90.0)\n    return (0.25 + 0.75 * rain) * terrain\ndef synthetic_dataset(n=20000, seed=7):",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "synthetic_dataset",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def synthetic_dataset(n=20000, seed=7):\n    rng = np.random.default_rng(seed)\n    elev = rng.uniform(0, 600, n)\n    slope = np.clip(rng.gamma(1.6, 3.0, n), 0, 40)\n    relief = np.clip(rng.normal(0, 4, n), -20, 20)\n    hal = np.clip(rng.gamma(1.8, 12.0, n), 0, 120)\n    soil = rng.uniform(0.05, 0.95, n)\n    r24 = np.clip(np.where(rng.random(n) < 0.35, rng.uniform(0, 5, n), rng.gamma(2.0, 45.0, n)), 0, 500)\n    r1 = np.clip(r24 * rng.uniform(0.05, 0.4, n), 0, 120)\n    X = np.column_stack([elev, slope, relief, hal, soil, r24, r1])",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "load_csv",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def load_csv(path):\n    with open(path, newline=\"\", encoding=\"utf-8\") as f:\n        rows = list(csv.DictReader(f))\n    if not rows:\n        raise SystemExit(\"CSV is empty\")\n    missing = [c for c in FEATURES if c not in rows[0]]\n    if missing:\n        raise SystemExit(f\"CSV is missing columns: {missing}\")\n    X = np.array([[float(r[c]) for c in FEATURES] for r in rows])\n    if not np.isfinite(X).all() or (X[:, 4] < 0).any() or (X[:, 4] > 1).any() or (X[:, 5:] < 0).any():",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "train",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def train(X, y, source, kind, mode=\"tier4\"):\n    y = np.asarray(y).astype(int)\n    counts = np.bincount(y)\n    strat = y if counts[counts > 0].min() >= 2 else None\n    Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=7, stratify=strat)\n    clf = HistGradientBoostingClassifier(max_iter=250, learning_rate=0.08, max_depth=6, l2_regularization=1.0, random_state=7)\n    clf.fit(Xtr, ytr)\n    pred = clf.predict(Xte)\n    holdout = {\"n_test\": int(len(yte)), \"accuracy\": round(float((pred == yte).mean()), 3)}\n    if mode == \"tier4\":",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_model",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def get_model():\n    if _state[\"bundle\"] is None:\n        if MODEL_PATH.exists() and CARD_PATH.exists():\n            _state[\"bundle\"] = joblib.load(MODEL_PATH)\n            _state[\"card\"] = json.loads(CARD_PATH.read_text())\n        else:\n            print(\"[flood_risk] No trained model found. Training the synthetic demo model...\")\n            X, y = synthetic_dataset()\n            train(X, y, \"synthetic heuristic labels (demo)\", \"synthetic-heuristic\")\n    return _state[\"bundle\"], _state[\"card\"]",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "predict",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "def predict(X):\n    b, card = get_model()\n    clf, proba = b[\"clf\"], b[\"clf\"].predict_proba(X)\n    if b[\"mode\"] == \"tier4\":\n        p4 = np.zeros((len(X), 4))\n        p4[:, clf.classes_.astype(int)] = proba\n        return p4.argmax(axis=1), (p4 @ np.array([0.0, 1.0, 2.0, 3.0])) / 3.0, p4\n    classes = list(clf.classes_)\n    p1 = proba[:, classes.index(1)] if 1 in classes else np.zeros(len(X))\n    return np.digitize(p1, card[\"tier_thresholds\"]), p1, None",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "FEATURES",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "FEATURES = [\"elevation_m\", \"slope_deg\", \"relief_m\", \"height_above_low_m\", \"soil_perm\", \"rain_24h_mm\", \"rain_1h_mm\"]\nTIERS = [\"Low\", \"Moderate\", \"High\", \"Severe\"]\nBINARY_THRESHOLDS = [0.20, 0.40, 0.65]  # uncalibrated probability bands (binary real-data mode)\nART = Path(__file__).parent / \"artifacts\"\nMODEL_PATH, CARD_PATH = ART / \"model.joblib\", ART / \"model_card.json\"\n_state = {\"bundle\": None, \"card\": None}\ndef heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "TIERS",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "TIERS = [\"Low\", \"Moderate\", \"High\", \"Severe\"]\nBINARY_THRESHOLDS = [0.20, 0.40, 0.65]  # uncalibrated probability bands (binary real-data mode)\nART = Path(__file__).parent / \"artifacts\"\nMODEL_PATH, CARD_PATH = ART / \"model.joblib\", ART / \"model_card.json\"\n_state = {\"bundle\": None, \"card\": None}\ndef heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings\n    flat = np.clip(1 - slope / 8.0, 0, 1)      # water drains slowly on flat ground",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "BINARY_THRESHOLDS",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "BINARY_THRESHOLDS = [0.20, 0.40, 0.65]  # uncalibrated probability bands (binary real-data mode)\nART = Path(__file__).parent / \"artifacts\"\nMODEL_PATH, CARD_PATH = ART / \"model.joblib\", ART / \"model_card.json\"\n_state = {\"bundle\": None, \"card\": None}\ndef heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings\n    flat = np.clip(1 - slope / 8.0, 0, 1)      # water drains slowly on flat ground\n    terrain = 0.45 * low + 0.25 * pooling + 0.20 * flat + 0.10 * (1 - soil)",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "ART",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "ART = Path(__file__).parent / \"artifacts\"\nMODEL_PATH, CARD_PATH = ART / \"model.joblib\", ART / \"model_card.json\"\n_state = {\"bundle\": None, \"card\": None}\ndef heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings\n    flat = np.clip(1 - slope / 8.0, 0, 1)      # water drains slowly on flat ground\n    terrain = 0.45 * low + 0.25 * pooling + 0.20 * flat + 0.10 * (1 - soil)\n    eff_rain = r24 * (1 - 0.6 * soil) + 2.0 * r1  # permeable soil absorbs part of the rain",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "_state",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.model",
+        "description": "ml-service.flood_risk.model",
+        "peekOfCode": "_state = {\"bundle\": None, \"card\": None}\ndef heuristic_index(X):\n    _, slope, relief, hal, soil, r24, r1 = X.T\n    low = np.clip(1 - hal / 25.0, 0, 1)        # near the lowest ground in the area\n    pooling = np.clip(-relief / 6.0, 0, 1)     # lower than the surroundings\n    flat = np.clip(1 - slope / 8.0, 0, 1)      # water drains slowly on flat ground\n    terrain = 0.45 * low + 0.25 * pooling + 0.20 * flat + 0.10 * (1 - soil)\n    eff_rain = r24 * (1 - 0.6 * soil) + 2.0 * r1  # permeable soil absorbs part of the rain\n    rain = 1 - np.exp(-eff_rain / 90.0)\n    return (0.25 + 0.75 * rain) * terrain",
+        "detail": "ml-service.flood_risk.model",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherUnavailableError",
+        "kind": 6,
+        "importPath": "ml-service.flood_risk.service",
+        "description": "ml-service.flood_risk.service",
+        "peekOfCode": "class WeatherUnavailableError(RuntimeError):\n    \"\"\"Raised when a live flood assessment cannot obtain its required rainfall input.\"\"\"\ndef assess(lat, lng, radius_m, n, rain_24h, rain_1h, soil):\n    LAT, LNG, dlat, dlng, cell_m = build_grid(lat, lng, radius_m, n)\n    elev, elev_src = get_elevation(LAT, LNG)\n    slope, relief, hal = derive(elev, cell_m)\n    weather = None\n    if rain_24h is not None:\n        r24 = float(rain_24h)\n        r1 = float(rain_1h) if rain_1h is not None else min(80.0, r24 * 0.25)",
+        "detail": "ml-service.flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "assess",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.service",
+        "description": "ml-service.flood_risk.service",
+        "peekOfCode": "def assess(lat, lng, radius_m, n, rain_24h, rain_1h, soil):\n    LAT, LNG, dlat, dlng, cell_m = build_grid(lat, lng, radius_m, n)\n    elev, elev_src = get_elevation(LAT, LNG)\n    slope, relief, hal = derive(elev, cell_m)\n    weather = None\n    if rain_24h is not None:\n        r24 = float(rain_24h)\n        r1 = float(rain_1h) if rain_1h is not None else min(80.0, r24 * 0.25)\n        r1 = min(r1, r24)\n        rain_src = \"manual scenario\"",
+        "detail": "ml-service.flood_risk.service",
+        "documentation": {}
+    },
+    {
+        "label": "build_grid",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "def build_grid(lat, lng, radius_m, n):\n    \"\"\"n x n cell centers over a square of side 2*radius_m. Axis 0 = latitude (south to north).\"\"\"\n    cell_m = 2.0 * radius_m / n\n    dlat = cell_m / M_LAT\n    dlng = cell_m / (M_LNG * math.cos(math.radians(lat)))\n    lats = lat + (np.arange(n) - (n - 1) / 2) * dlat\n    lngs = lng + (np.arange(n) - (n - 1) / 2) * dlng\n    LAT, LNG = np.meshgrid(lats, lngs, indexing=\"ij\")\n    return LAT, LNG, dlat, dlng, cell_m\ndef _geotiff(LAT, LNG):",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "get_elevation",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "def get_elevation(LAT, LNG, remote=True):\n    key = (round(float(LAT.mean()), 4), round(float(LNG.mean()), 4), LAT.shape[0], round(float(np.ptp(LAT)), 4), remote)\n    if key in _cache:\n        return _cache[key]\n    sources = [(\"GeoTIFF (local DEM)\", _geotiff)]\n    if remote:\n        sources.append((\"Copernicus GLO-90 (~90 m) via Open-Meteo\", _open_meteo))\n    for name, fn in sources:\n        try:\n            arr = fn(LAT, LNG)",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "derive",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "def derive(elev, cell_m):\n    \"\"\"slope (deg), local relief (m vs 5x5 neighbourhood mean), height above lowest point in the area (m).\"\"\"\n    gy, gx = np.gradient(elev, cell_m)\n    slope = np.degrees(np.arctan(np.hypot(gx, gy)))\n    k = 5\n    pad = np.pad(elev, k // 2, mode=\"edge\")\n    h, w = elev.shape\n    mean = sum(pad[i : i + h, j : j + w] for i in range(k) for j in range(k)) / (k * k)\n    return slope, elev - mean, elev - np.nanmin(elev)",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "M_LAT",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "M_LAT = 110540.0\nM_LNG = 111320.0\nELEV_URL = \"https://api.open-meteo.com/v1/elevation\"\n_cache: dict = {}\ndef build_grid(lat, lng, radius_m, n):\n    \"\"\"n x n cell centers over a square of side 2*radius_m. Axis 0 = latitude (south to north).\"\"\"\n    cell_m = 2.0 * radius_m / n\n    dlat = cell_m / M_LAT\n    dlng = cell_m / (M_LNG * math.cos(math.radians(lat)))\n    lats = lat + (np.arange(n) - (n - 1) / 2) * dlat",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "M_LNG",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "M_LNG = 111320.0\nELEV_URL = \"https://api.open-meteo.com/v1/elevation\"\n_cache: dict = {}\ndef build_grid(lat, lng, radius_m, n):\n    \"\"\"n x n cell centers over a square of side 2*radius_m. Axis 0 = latitude (south to north).\"\"\"\n    cell_m = 2.0 * radius_m / n\n    dlat = cell_m / M_LAT\n    dlng = cell_m / (M_LNG * math.cos(math.radians(lat)))\n    lats = lat + (np.arange(n) - (n - 1) / 2) * dlat\n    lngs = lng + (np.arange(n) - (n - 1) / 2) * dlng",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "ELEV_URL",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.terrain",
+        "description": "ml-service.flood_risk.terrain",
+        "peekOfCode": "ELEV_URL = \"https://api.open-meteo.com/v1/elevation\"\n_cache: dict = {}\ndef build_grid(lat, lng, radius_m, n):\n    \"\"\"n x n cell centers over a square of side 2*radius_m. Axis 0 = latitude (south to north).\"\"\"\n    cell_m = 2.0 * radius_m / n\n    dlat = cell_m / M_LAT\n    dlng = cell_m / (M_LNG * math.cos(math.radians(lat)))\n    lats = lat + (np.arange(n) - (n - 1) / 2) * dlat\n    lngs = lng + (np.arange(n) - (n - 1) / 2) * dlng\n    LAT, LNG = np.meshgrid(lats, lngs, indexing=\"ij\")",
+        "detail": "ml-service.flood_risk.terrain",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_rain",
+        "kind": 2,
+        "importPath": "ml-service.flood_risk.weather",
+        "description": "ml-service.flood_risk.weather",
+        "peekOfCode": "def fetch_rain(lat, lng):\n    r = httpx.get(\n        URL,\n        params={\n            \"latitude\": f\"{lat:.4f}\", \"longitude\": f\"{lng:.4f}\", \"hourly\": \"precipitation\",\n            \"past_days\": 1, \"forecast_days\": 2, \"timezone\": \"UTC\",\n        },\n        timeout=12,\n    )\n    r.raise_for_status()",
+        "detail": "ml-service.flood_risk.weather",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "kind": 5,
+        "importPath": "ml-service.flood_risk.weather",
+        "description": "ml-service.flood_risk.weather",
+        "peekOfCode": "URL = \"https://api.open-meteo.com/v1/forecast\"\ndef fetch_rain(lat, lng):\n    r = httpx.get(\n        URL,\n        params={\n            \"latitude\": f\"{lat:.4f}\", \"longitude\": f\"{lng:.4f}\", \"hourly\": \"precipitation\",\n            \"past_days\": 1, \"forecast_days\": 2, \"timezone\": \"UTC\",\n        },\n        timeout=12,\n    )",
+        "detail": "ml-service.flood_risk.weather",
+        "documentation": {}
+    },
+    {
+        "label": "estimate",
+        "kind": 2,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "def estimate(lat, lng, elapsed_min, situation, bearing_deg, speed_ms, accuracy_m, seed, n_particles=4000):\n    cfg = SITUATIONS[situation]\n    warnings = []\n    if elapsed_min > 1440:\n        warnings.append(\"More than 24 h have passed. The simulation is capped at 24 h, so the real zone is probably larger.\")\n    T = min(float(elapsed_min), 1440.0) * 60.0\n    flow = DEFAULT_FLOW_MS if speed_ms is None else float(speed_ms)\n    sigma0 = max(float(accuracy_m), 30.0)\n    reach = 1.5 * (flow * cfg[\"drift\"] + cfg[\"walk\"]) * T + 3 * sigma0\n    radius = float(np.clip(reach, 1200.0, 8000.0))  # >= 1200 m keeps cells >= 90 m, the DEM resolution",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "SITUATIONS",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "SITUATIONS = {\n    \"water_borne\": {\"label\": \"Swept by water\", \"drift\": 1.0, \"walk\": 0.0, \"decay_m\": 2.0},\n    \"on_foot\": {\"label\": \"On foot, moving\", \"drift\": 0.3, \"walk\": 0.4, \"decay_m\": 15.0},\n    \"stranded\": {\"label\": \"Stranded in place\", \"drift\": 0.15, \"walk\": 0.02, \"decay_m\": 3.0},\n}\nDEFAULT_FLOW_MS = 0.5   # assumed floodwater drift speed when nobody has assessed it\nASSESSED_BLEND = 0.7    # weight of an assessed flow direction vs terrain downslope direction\nDT = 300.0              # simulation step (s)\nLEVELS = (0.5, 0.75, 0.9)\nGRID = 24               # terrain grid (24 x 24 DEM samples)",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_FLOW_MS",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "DEFAULT_FLOW_MS = 0.5   # assumed floodwater drift speed when nobody has assessed it\nASSESSED_BLEND = 0.7    # weight of an assessed flow direction vs terrain downslope direction\nDT = 300.0              # simulation step (s)\nLEVELS = (0.5, 0.75, 0.9)\nGRID = 24               # terrain grid (24 x 24 DEM samples)\nBINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "ASSESSED_BLEND",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "ASSESSED_BLEND = 0.7    # weight of an assessed flow direction vs terrain downslope direction\nDT = 300.0              # simulation step (s)\nLEVELS = (0.5, 0.75, 0.9)\nGRID = 24               # terrain grid (24 x 24 DEM samples)\nBINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}\n    def add(a, b):",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "DT",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "DT = 300.0              # simulation step (s)\nLEVELS = (0.5, 0.75, 0.9)\nGRID = 24               # terrain grid (24 x 24 DEM samples)\nBINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}\n    def add(a, b):\n        nxt.setdefault(a, []).append(b)",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "LEVELS",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "LEVELS = (0.5, 0.75, 0.9)\nGRID = 24               # terrain grid (24 x 24 DEM samples)\nBINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}\n    def add(a, b):\n        nxt.setdefault(a, []).append(b)\n    for i in range(m):",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "GRID",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "GRID = 24               # terrain grid (24 x 24 DEM samples)\nBINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}\n    def add(a, b):\n        nxt.setdefault(a, []).append(b)\n    for i in range(m):\n        for j in range(m):",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "BINS",
+        "kind": 5,
+        "importPath": "ml-service.search_zone.drift_model",
+        "description": "ml-service.search_zone.drift_model",
+        "peekOfCode": "BINS = 48               # density grid resolution\ndef _rings(mask, to_ll):\n    \"\"\"Outer boundaries of a grid-aligned cell set as lat/lng rings (holes are filled).\"\"\"\n    m = mask.shape[0]\n    nxt = {}\n    def add(a, b):\n        nxt.setdefault(a, []).append(b)\n    for i in range(m):\n        for j in range(m):\n            if not mask[i, j]:",
+        "detail": "ml-service.search_zone.drift_model",
+        "documentation": {}
+    },
+    {
+        "label": "simulate_rain",
+        "kind": 2,
+        "importPath": "ml-service.simulator.flood_sim",
+        "description": "ml-service.simulator.flood_sim",
+        "peekOfCode": "def simulate_rain(lat, lng, radius_m, n, soil, intensity, hours, antecedent):\n    LAT, LNG, cell_m, elev, head, warn = _grid(lat, lng, radius_m, n)\n    slope, relief, hal = derive(elev, cell_m)\n    N = elev.size\n    first_hi = np.full(N, -1)\n    first_sv = np.full(N, -1)\n    frames = []\n    for t in range(hours + 1):\n        r24 = min(antecedent + intensity * t, 600.0)\n        r1 = float(intensity) if t > 0 else 0.0",
+        "detail": "ml-service.simulator.flood_sim",
+        "documentation": {}
+    },
+    {
+        "label": "simulate_surge",
+        "kind": 2,
+        "importPath": "ml-service.simulator.flood_sim",
+        "description": "ml-service.simulator.flood_sim",
+        "peekOfCode": "def simulate_surge(lat, lng, radius_m, n, height, rise, src_lat, src_lng, walk):\n    LAT, LNG, cell_m, elev, head, warn = _grid(lat, lng, radius_m, n)\n    b = head[\"bounds\"]\n    if src_lat is not None and src_lng is not None:\n        d = (LAT - src_lat) ** 2 + ((LNG - src_lng) * math.cos(math.radians(lat))) ** 2\n        si, sj = np.unravel_index(int(np.argmin(d)), d.shape)\n        assumed = False\n        if not (b[\"south\"] <= src_lat <= b[\"north\"] and b[\"west\"] <= src_lng <= b[\"east\"]):\n            warn.append(\"The chosen water source is outside the analysed area, so the nearest edge cell was used.\")\n    else:",
+        "detail": "ml-service.simulator.flood_sim",
+        "documentation": {}
+    },
+    {
+        "label": "STEP",
+        "kind": 5,
+        "importPath": "ml-service.simulator.flood_sim",
+        "description": "ml-service.simulator.flood_sim",
+        "peekOfCode": "STEP = 0.1  # metres between level steps\ndef _grid(lat, lng, radius_m, n):\n    LAT, LNG, dlat, dlng, cell_m = build_grid(lat, lng, radius_m, n)\n    elev, src = get_elevation(LAT, LNG)\n    head = {\n        \"center\": {\"lat\": lat, \"lng\": lng}, \"radius_m\": radius_m, \"grid\": n,\n        \"cell\": {\"dLat\": dlat, \"dLng\": dlng, \"size_m\": round(cell_m)},\n        \"bounds\": {\"south\": float(LAT.min() - dlat / 2), \"north\": float(LAT.max() + dlat / 2),\n                   \"west\": float(LNG.min() - dlng / 2), \"east\": float(LNG.max() + dlng / 2)},\n        \"sources\": {\"elevation\": src},",
+        "detail": "ml-service.simulator.flood_sim",
+        "documentation": {}
+    },
+    {
+        "label": "FloodRiskWeatherTests",
+        "kind": 6,
+        "importPath": "ml-service.tests.test_flood_risk_service",
+        "description": "ml-service.tests.test_flood_risk_service",
+        "peekOfCode": "class FloodRiskWeatherTests(unittest.TestCase):\n    def setUp(self):\n        self.grid = np.zeros((1, 1))\n        self.card = {\n            \"trained_on\": \"test\",\n            \"kind\": \"test\",\n            \"mode\": \"tier4\",\n            \"version\": \"test\",\n            \"created_at\": \"test\",\n        }",
+        "detail": "ml-service.tests.test_flood_risk_service",
+        "documentation": {}
+    },
+    {
+        "label": "Event",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class Event(BaseModel):\n    id: str = Field(min_length=1, max_length=120)\n    kind: Literal[\"sos\", \"report\"]\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    t: float\n    weight: float = Field(default=1.0, gt=0, le=10)\nclass ClusterParams(BaseModel):\n    algorithm: Literal[\"dbscan\", \"hdbscan\"] = \"dbscan\"\n    eps_m: float = Field(default=150, ge=20, le=5000)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "ClusterParams",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class ClusterParams(BaseModel):\n    algorithm: Literal[\"dbscan\", \"hdbscan\"] = \"dbscan\"\n    eps_m: float = Field(default=150, ge=20, le=5000)\n    time_window_min: float = Field(default=60, ge=5, le=1440)\n    min_samples: int = Field(default=2, ge=1, le=10)\nclass ClusterRequest(BaseModel):\n    events: List[Event] = Field(max_length=2000)\n    params: ClusterParams = Field(default_factory=ClusterParams)\n    @model_validator(mode=\"after\")\n    def unique_ids(self):",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "ClusterRequest",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class ClusterRequest(BaseModel):\n    events: List[Event] = Field(max_length=2000)\n    params: ClusterParams = Field(default_factory=ClusterParams)\n    @model_validator(mode=\"after\")\n    def unique_ids(self):\n        ids = [e.id for e in self.events]\n        if len(ids) != len(set(ids)):\n            raise ValueError(\"event ids must be unique\")\n        return self\nclass RiskRequest(BaseModel):",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "RiskRequest",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class RiskRequest(BaseModel):\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    radius_m: float = Field(default=3000, ge=500, le=10000)\n    grid: int = Field(default=14, ge=6, le=20)\n    rain_24h_mm: Optional[float] = Field(default=None, ge=0, le=1000)\n    rain_1h_mm: Optional[float] = Field(default=None, ge=0, le=200)\n    soil_perm: float = Field(default=0.5, ge=0, le=1)\n    @model_validator(mode=\"after\")\n    def cell_size(self):",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "ZoneRequest",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class ZoneRequest(BaseModel):\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    elapsed_min: float = Field(ge=1, le=20160)\n    situation: Literal[\"water_borne\", \"on_foot\", \"stranded\"]\n    bearing_deg: Optional[float] = Field(default=None, ge=0, lt=360)\n    speed_ms: Optional[float] = Field(default=None, ge=0, le=4)\n    accuracy_m: float = Field(default=50, ge=0, le=2000)\n    seed: int = Field(default=7, ge=0, le=2**31 - 1)\n@app.post(\"/search-zone\", dependencies=[Depends(require_key)])",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "RainScenario",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class RainScenario(BaseModel):\n    intensity_mm_h: float = Field(ge=1, le=150)\n    hours: int = Field(default=6, ge=1, le=12)\n    antecedent_mm: float = Field(default=0, ge=0, le=300)\nclass SurgeScenario(BaseModel):\n    height_m: float = Field(ge=0.1, le=5)\n    rise_m_per_h: float = Field(default=0.5, ge=0.05, le=3)\n    source_lat: Optional[float] = Field(default=None, ge=-90, le=90)\n    source_lng: Optional[float] = Field(default=None, ge=-180, le=180)\n    walk_ms: float = Field(default=0.8, ge=0.2, le=2)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "SurgeScenario",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class SurgeScenario(BaseModel):\n    height_m: float = Field(ge=0.1, le=5)\n    rise_m_per_h: float = Field(default=0.5, ge=0.05, le=3)\n    source_lat: Optional[float] = Field(default=None, ge=-90, le=90)\n    source_lng: Optional[float] = Field(default=None, ge=-180, le=180)\n    walk_ms: float = Field(default=0.8, ge=0.2, le=2)\nclass SimRequest(BaseModel):\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    radius_m: float = Field(default=3000, ge=500, le=10000)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "SimRequest",
+        "kind": 6,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "class SimRequest(BaseModel):\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    radius_m: float = Field(default=3000, ge=500, le=10000)\n    grid: int = Field(default=14, ge=6, le=20)\n    soil_perm: float = Field(default=0.5, ge=0, le=1)\n    mode: Literal[\"rain\", \"surge\"]\n    rain: Optional[RainScenario] = None\n    surge: Optional[SurgeScenario] = None\n    @model_validator(mode=\"after\")",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "require_key",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def require_key(x_internal_key: str = Header(default=\"\")):\n    if API_KEY and not hmac.compare_digest(x_internal_key.encode(), API_KEY.encode()):\n        raise HTTPException(status_code=401, detail=\"Unauthorized\")\nclass Event(BaseModel):\n    id: str = Field(min_length=1, max_length=120)\n    kind: Literal[\"sos\", \"report\"]\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    t: float\n    weight: float = Field(default=1.0, gt=0, le=10)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "search_zone",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def search_zone(req: ZoneRequest):\n    return estimate(req.lat, req.lng, req.elapsed_min, req.situation, req.bearing_deg, req.speed_ms, req.accuracy_m, req.seed)\n@app.get(\"/health\")\ndef health():\n    card = get_model()[1]\n    return {\n        \"status\": \"ok\",\n        \"service\": \"arkgrid-ml\",\n        \"clustering\": [\"dbscan\"] + ([\"hdbscan\"] if HDBSCAN is not None else []),\n        \"flood_model\": {\"trained_on\": card[\"trained_on\"], \"mode\": card[\"mode\"], \"kind\": card[\"kind\"]},",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "health",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def health():\n    card = get_model()[1]\n    return {\n        \"status\": \"ok\",\n        \"service\": \"arkgrid-ml\",\n        \"clustering\": [\"dbscan\"] + ([\"hdbscan\"] if HDBSCAN is not None else []),\n        \"flood_model\": {\"trained_on\": card[\"trained_on\"], \"mode\": card[\"mode\"], \"kind\": card[\"kind\"]},\n    }\n@app.post(\"/cluster\", dependencies=[Depends(require_key)])\ndef cluster(req: ClusterRequest):",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "cluster",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def cluster(req: ClusterRequest):\n    p = req.params\n    return cluster_events([e.model_dump() for e in req.events], p.algorithm, p.eps_m, p.time_window_min, p.min_samples)\n@app.post(\"/flood-risk\", dependencies=[Depends(require_key)])\ndef flood_risk(req: RiskRequest):\n    try:\n        return assess(req.lat, req.lng, req.radius_m, req.grid, req.rain_24h_mm, req.rain_1h_mm, req.soil_perm)\n    except WeatherUnavailableError as err:\n        raise HTTPException(status_code=503, detail=str(err)) from err\n@app.get(\"/flood-risk/model\", dependencies=[Depends(require_key)])",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "flood_risk",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def flood_risk(req: RiskRequest):\n    try:\n        return assess(req.lat, req.lng, req.radius_m, req.grid, req.rain_24h_mm, req.rain_1h_mm, req.soil_perm)\n    except WeatherUnavailableError as err:\n        raise HTTPException(status_code=503, detail=str(err)) from err\n@app.get(\"/flood-risk/model\", dependencies=[Depends(require_key)])\ndef flood_model():\n    return get_model()[1]\nclass RainScenario(BaseModel):\n    intensity_mm_h: float = Field(ge=1, le=150)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "flood_model",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def flood_model():\n    return get_model()[1]\nclass RainScenario(BaseModel):\n    intensity_mm_h: float = Field(ge=1, le=150)\n    hours: int = Field(default=6, ge=1, le=12)\n    antecedent_mm: float = Field(default=0, ge=0, le=300)\nclass SurgeScenario(BaseModel):\n    height_m: float = Field(ge=0.1, le=5)\n    rise_m_per_h: float = Field(default=0.5, ge=0.05, le=3)\n    source_lat: Optional[float] = Field(default=None, ge=-90, le=90)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "simulate",
+        "kind": 2,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "def simulate(req: SimRequest):\n    if req.mode == \"rain\":\n        r = req.rain\n        return simulate_rain(req.lat, req.lng, req.radius_m, req.grid, req.soil_perm, r.intensity_mm_h, r.hours, r.antecedent_mm)\n    s = req.surge\n    return simulate_surge(req.lat, req.lng, req.radius_m, req.grid, s.height_m, s.rise_m_per_h, s.source_lat, s.source_lng, s.walk_ms)",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "API_KEY",
+        "kind": 5,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "API_KEY = os.getenv(\"ML_API_KEY\", \"\")\nif not API_KEY:\n    print(\"WARNING: ML_API_KEY is not set. The service accepts unauthenticated requests.\")\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    get_model()  # loads, or trains the synthetic demo model on first run\n    yield\napp = FastAPI(title=\"ArkGrid ML Service\", version=\"0.3.0\", lifespan=lifespan)\ndef require_key(x_internal_key: str = Header(default=\"\")):\n    if API_KEY and not hmac.compare_digest(x_internal_key.encode(), API_KEY.encode()):",
+        "detail": "ml-service.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "ml-service.main",
+        "description": "ml-service.main",
+        "peekOfCode": "app = FastAPI(title=\"ArkGrid ML Service\", version=\"0.3.0\", lifespan=lifespan)\ndef require_key(x_internal_key: str = Header(default=\"\")):\n    if API_KEY and not hmac.compare_digest(x_internal_key.encode(), API_KEY.encode()):\n        raise HTTPException(status_code=401, detail=\"Unauthorized\")\nclass Event(BaseModel):\n    id: str = Field(min_length=1, max_length=120)\n    kind: Literal[\"sos\", \"report\"]\n    lat: float = Field(ge=-90, le=90)\n    lng: float = Field(ge=-180, le=180)\n    t: float",
+        "detail": "ml-service.main",
+        "documentation": {}
+    }
+]

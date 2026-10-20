@@ -106,31 +106,31 @@ export default function ChatWindow({ open, onClose }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.96 }}
           transition={{ type: "spring", damping: 24, stiffness: 260 }}
-          className="fixed inset-0 z-[55] flex flex-col overflow-hidden border border-white/15 bg-navy-900/95 shadow-glow-indigo backdrop-blur-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[620px] sm:w-[410px] sm:rounded-3xl"
+          className="fixed inset-0 z-[55] flex flex-col overflow-hidden border border-slate-200 bg-navy-900/95 shadow-glow-indigo backdrop-blur-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[620px] sm:w-[410px] sm:rounded-3xl"
         >
           {/* Header */}
-          <div className="flex items-center gap-3 border-b border-white/10 bg-gradient-to-r from-ark-indigo/25 via-ark-cyan/10 to-ark-coral/15 px-4 py-3">
+          <div className="flex items-center gap-3 border-b border-slate-200 bg-gradient-to-r from-ark-indigo/10 via-ark-cyan/10 to-ark-coral/10 px-4 py-3">
             <BotAvatar size={40} />
             <div className="flex-1">
-              <p className="font-display text-lg font-bold leading-tight">ArkBot</p>
+              <p className="font-display text-lg font-bold leading-tight text-slate-900">ArkBot</p>
               <p className="flex items-center gap-1.5 text-xs text-ark-cyan">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-ark-cyan" /> Live flood-safety assistant
               </p>
             </div>
             {messages.length > 0 && (
-              <button onClick={() => { abortRef.current?.abort(); setMessages([]); }} className="rounded-lg p-2 text-slate-400 hover:bg-white/10 hover:text-white" title="Clear chat">
+              <button onClick={() => { abortRef.current?.abort(); setMessages([]); }} className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900" title="Clear chat">
                 <Trash2 size={17} />
               </button>
             )}
-            <button onClick={onClose} className="rounded-lg p-2 text-slate-400 hover:bg-white/10 hover:text-white"><X size={19} /></button>
+            <button onClick={onClose} className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900"><X size={19} /></button>
           </div>
 
           {/* Messages */}
           <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
             {messages.length === 0 ? (
               <div className="space-y-4">
-                <div className="glass p-4 text-sm text-slate-300">
-                  <p className="mb-1 flex items-center gap-2 font-display font-semibold text-white">
+                <div className="glass p-4 text-sm text-slate-600">
+                  <p className="mb-1 flex items-center gap-2 font-display font-semibold text-slate-900">
                     <Sparkles size={16} className="text-ark-cyan" /> Hi {profile.name.split(" ")[0]}, I'm ArkBot
                   </p>
                   I answer using live shelter, road, and hazard data from ArkGrid. In immediate danger? Press SOS and call 112.
@@ -138,7 +138,7 @@ export default function ChatWindow({ open, onClose }) {
                 <div className="flex flex-col gap-2">
                   {prompts.map((p) => (
                     <button key={p} onClick={() => send(p)}
-                      className="rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-left text-sm text-slate-300 transition hover:border-ark-cyan/50 hover:bg-ark-cyan/10 hover:text-white">
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-left text-sm text-slate-700 transition hover:border-ark-cyan/50 hover:bg-ark-cyan/5 hover:text-slate-900">
                       {p}
                     </button>
                   ))}
@@ -153,7 +153,7 @@ export default function ChatWindow({ open, onClose }) {
           </div>
 
           {/* Input */}
-          <div className="border-t border-white/10 p-3">
+          <div className="border-t border-slate-200 p-3">
             <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="flex gap-2">
               <input value={input} onChange={(e) => setInput(e.target.value)} maxLength={500}
                 placeholder="Ask about flood safety…" className="input-glass flex-1" />

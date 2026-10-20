@@ -11,7 +11,6 @@ import Dashboard from "./pages/command/Dashboard";
 import ComingSoon from "./pages/ComingSoon";
 import FamilyNetwork from "./pages/citizen/FamilyNetwork";
 import SOS from "./pages/citizen/SOS";
-import Shelters from "./pages/citizen/Shelters";
 import Reports from "./pages/citizen/Reports";
 import RoadMap from "./pages/citizen/Roadmap";
 import Incidents from "./pages/command/Incidents";
@@ -20,8 +19,11 @@ import Priority from "./pages/command/Priority";
 import SearchZones from "./pages/command/SearchZones";
 import Simulator from "./pages/command/Simulator";
 import Logistics from "./pages/command/Logistics";
-import Safety from "./pages/command/Safety";
+import Safety from "./pages/command/safety";
 import About from "./pages/About";
+import LiveObservations from "./pages/citizen/LiveObservations";
+import HeatWave from "./pages/citizen/HeatWave";
+import DisasterHistory from "./pages/citizen/DisasterHistory";
 
 
 const home = (profile) => (profile.role === "citizen" ? "/citizen" : "/command");
@@ -29,33 +31,33 @@ const home = (profile) => (profile.role === "citizen" ? "/citizen" : "/command")
 function PublicOnly({ children }) {
   const { profile, loading } = useAuth();
   if (loading) return <Loader />;
-  if (profile) return <Navigate to={home(profile)} replace />;
+  if (profile && profile.role !== "citizen") return <Navigate to={home(profile)} replace />;
   return children;
 }
 
 function RootRedirect() {
   const { profile, loading } = useAuth();
   if (loading) return <Loader />;
-  return <Navigate to={profile ? home(profile) : "/login"} replace />;
+  return <Navigate to={profile ? home(profile) : "/citizen"} replace />;
 }
 
 const live = {
   "/citizen/family": <FamilyNetwork />,
   "/citizen/sos": <SOS />,
-  "/citizen/shelters": <Shelters />,
-"/citizen/reports": <Reports />,
+  "/citizen/reports": <Reports />,
   "/citizen/roads": <RoadMap />,
-  "/command/shelters": <Shelters />,
   "/command/reports": <Reports />,
   "/command/roads": <RoadMap />,
-    "/command/incidents": <Incidents />,
- "/citizen/risk": <FloodRisk />,
+  "/command/incidents": <Incidents />,
+  "/citizen/risk": <FloodRisk />,
   "/command/risk": <FloodRisk />,
   "/command/priority": <Priority />,
   "/command/search-zones": <SearchZones />,
   "/command/simulator": <Simulator />,
   "/command/logistics": <Logistics />,
   "/command/drone-safety": <Safety />,
+  "/command/observations": <LiveObservations />,
+  "/command/heat-wave": <HeatWave />,
 };
 
 const sub = (nav, base) =>
@@ -73,11 +75,23 @@ export default function App() {
       <Route path="/login" element={<PublicOnly><Login /></PublicOnly>} />
       <Route path="/register" element={<PublicOnly><Register /></PublicOnly>} />
       <Route path="/" element={<RootRedirect />} />
+      <Route path="/citizen/shelters" element={<Navigate to="/citizen" replace />} />
+      <Route path="/command/shelters" element={<Navigate to="/command" replace />} />
 
-      <Route element={<ProtectedRoute roles={["citizen"]} />}>
-        <Route path="/citizen" element={<AppLayout />}>
-          <Route index element={<Home />} />
-          {sub(citizenNav, "/citizen")}
+      <Route path="/citizen" element={<AppLayout />}>
+        <Route index element={<Home />} />
+        <Route path="observations" element={<LiveObservations />} />
+        <Route path="heat-wave" element={<HeatWave />} />
+        <Route path="disaster-history" element={<DisasterHistory />} />
+        <Route element={<ProtectedRoute roles={["citizen"]} />}>
+          {sub(
+            citizenNav.filter((item) => ![
+              "/citizen/observations",
+              "/citizen/heat-wave",
+              "/citizen/disaster-history",
+            ].includes(item.path)),
+            "/citizen"
+          )}
         </Route>
       </Route>
 
@@ -86,11 +100,11 @@ export default function App() {
           <Route index element={<Dashboard />} />
           {sub(commandNav, "/command")}
         </Route>
+      </Route>
+      <Route element={<ProtectedRoute />}>
+        <Route path="/about" element={<AppLayout />}>
+          <Route index element={<About />} />
         </Route>
-        <Route element={<ProtectedRoute />}>
-  <Route path="/about" element={<AppLayout />}>
-    <Route index element={<About />} />
-  </Route>
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -12,6 +12,7 @@ export const AVAIL_META = {
   limited: { label: "Filling up", tone: "indigo", hex: "#6366F1", bar: "from-ark-indigo to-ark-cyan" },
   full: { label: "Full", tone: "coral", hex: "#FF5A6E", bar: "from-ark-coral to-ark-indigo" },
   closed: { label: "Closed", tone: "coral", hex: "#64748B", bar: "from-slate-500 to-slate-600" },
+  unknown: { label: "Status unconfirmed", tone: "slate", hex: "#94A3B8", bar: "from-slate-500 to-slate-400" },
 };
 
 export const RES_META = {

@@ -4,54 +4,45 @@
 
 html, body, #root { min-height: 100%; }
 
-body {
-  @apply bg-navy-900 text-slate-200 font-sans antialiased;
-}
+body { @apply bg-navy-900 text-slate-800 font-sans antialiased; }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #070B1F; }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#6366F1, #22D3EE);
-  border-radius: 8px;
-}
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
 
 @layer components {
-  .glass {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl;
-  }
-  .glass-hover {
-    @apply transition-all duration-300 hover:bg-white/[0.08] hover:border-white/25 hover:-translate-y-1;
-  }
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-ark-indigo via-ark-cyan to-ark-coral;
-  }
+  .glass { @apply rounded-2xl border border-slate-200 bg-white shadow-panel; }
+  .glass-hover { @apply transition-all duration-150 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50; }
+  .text-gradient { @apply text-blue-700; }
   .input-glass {
-    @apply w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-3 text-sm text-white
-           placeholder:text-slate-500 outline-none transition-all duration-300
-           focus:border-ark-cyan focus:bg-white/[0.08] focus:shadow-glow-cyan;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900
+           placeholder:text-slate-400 outline-none transition-colors
+           focus:border-blue-500 focus:ring-2 focus:ring-blue-100;
   }
+  .mono { @apply font-mono text-[0.8em] tracking-tight; }
+  .label-caps { @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500; }
 }
 /* ---- Map styling ---- */
-.leaflet-container { background: #070B1F; font-family: Inter, sans-serif; border-radius: 1rem; }
+.leaflet-container { background: #F1F5F9; font-family: Inter, sans-serif; border-radius: 12px; }
 .leaflet-tooltip {
-  background: #0C1230; color: #fff; border: 1px solid rgba(255,255,255,.15);
+  background: #fff; color: #172033; border: 1px solid #E2E8F0;
   border-radius: 10px; box-shadow: none; font-weight: 600;
 }
-.leaflet-tooltip-top:before { border-top-color: #0C1230; }
+.leaflet-tooltip-top:before { border-top-color: #fff; }
 
 .ark-pin {
   position: relative; width: 34px; height: 34px; border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg); background: var(--c); border: 2px solid #fff;
-  box-shadow: 0 0 18px var(--c); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(15,23,42,.2); display: flex; align-items: center; justify-content: center;
 }
-.ark-pin span { transform: rotate(45deg); font: 700 13px "Space Grotesk", sans-serif; color: #070B1F; }
+.ark-pin span { transform: rotate(45deg); font: 700 12px Inter, sans-serif; color: #101820; }
 .ark-pin.sos::after {
   content: ""; position: absolute; inset: -8px; border-radius: 50%;
   border: 2px solid var(--c); animation: pinPulse 1.4s ease-out infinite;
 }
 @keyframes pinPulse { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.7); opacity: 0; } }
 /* Accessibility */
-:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; border-radius: 6px; }
+:focus-visible { outline: 2px solid #4FA3BE; outline-offset: 2px; border-radius: 6px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -74,5 +65,5 @@ body {
 }
 @keyframes youPulse { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(1); opacity: 0; } }
 
-/* dark look for the no-key OpenStreetMap fallback only */
+/* Preserve the optional dark map theme for the no-key OpenStreetMap fallback. */
 .ark-dark-osm { filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9); }

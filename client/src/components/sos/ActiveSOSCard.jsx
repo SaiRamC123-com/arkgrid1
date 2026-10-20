@@ -9,7 +9,7 @@ export const NEED_LABELS = {
   food: "Food", boat: "Boat rescue", shelter: "Shelter",
 };
 
-export default function ActiveSOSCard({ phase, sos, queued, fix, online, onResolve }) {
+export default function ActiveSOSCard({ phase, sos, queued, online, onResolve }) {
   const queuedPhase = phase === "queued";
   const src = queuedPhase ? queued.payload : sos;
   const loc = queuedPhase
@@ -28,7 +28,7 @@ export default function ActiveSOSCard({ phase, sos, queued, fix, online, onResol
 
       <Badge tone="coral">
         <Radio size={13} className="animate-pulse" />
-        {queuedPhase ? "Queued, waiting for connection" : "SOS active. Responders can see you"}
+        {queuedPhase ? "Saved, awaiting response-system acknowledgement" : "SOS recorded by response system"}
       </Badge>
 
       <h2 className="mt-4 font-display text-3xl font-bold">
@@ -37,9 +37,9 @@ export default function ActiveSOSCard({ phase, sos, queued, fix, online, onResol
       <p className="mt-2 text-sm text-slate-400">
         {queuedPhase
           ? online
-            ? "Sending now. This should take a few seconds."
-            : "It will send automatically the moment your phone gets any signal. Keep the app open if you can."
-          : "Your circle has been alerted. Your location keeps updating while this is active."}
+            ? "Saved on this device and awaiting acknowledgement from the response system."
+            : "Saved on this device only. It has not been transmitted; retry when connectivity returns."
+          : "The response system recorded this incident. This does not confirm that help has arrived or that you are safe."}
       </p>
 
       <div className="mt-5 grid gap-3 text-sm sm:grid-cols-2">
@@ -52,9 +52,15 @@ export default function ActiveSOSCard({ phase, sos, queued, fix, online, onResol
         <div className="flex items-center gap-2 rounded-xl bg-white/5 px-4 py-3 sm:col-span-2">
           <MapPin size={16} className="text-ark-coral" />
           {loc
-            ? `${loc.lat.toFixed(5)}, ${loc.lng.toFixed(5)} (±${loc.accuracy || "?"} m)`
+            ? `${loc.lat.toFixed(5)}, ${loc.lng.toFixed(5)}${Number.isFinite(loc.accuracy) ? ` (±${loc.accuracy} m)` : " (accuracy not reported)"}`
             : "Location unavailable. Enable GPS if you can"}
         </div>
+        {!queuedPhase && sos.locationSource && (
+          <p className="text-xs text-slate-500 sm:col-span-2">
+            Location source: {sos.locationSource.replaceAll("_", " ")}
+            {sos.locationAt ? ` · captured ${new Date(sos.locationAt).toLocaleString()}` : ""}
+          </p>
+        )}
       </div>
 
       {(src.needs || []).length > 0 && (

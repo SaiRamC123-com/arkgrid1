@@ -31,14 +31,28 @@ function loadServiceAccount() {
     }
   }
 
-  // Option 3: Local file (serviceAccountKey.json)
-  const localKeyPath = path.join(__dirname, "serviceAccountKey.json");
-  if (fs.existsSync(localKeyPath)) {
-    return require(localKeyPath);
+  // Option 3: Local file, Render Secret Files, or GOOGLE_APPLICATION_CREDENTIALS
+  const candidatePaths = [
+    process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    path.join(__dirname, "serviceAccountKey.json"),
+    path.join(process.cwd(), "config", "serviceAccountKey.json"),
+    path.join(process.cwd(), "serviceAccountKey.json"),
+    "/etc/secrets/serviceAccountKey.json",
+  ].filter(Boolean);
+
+  for (const candidate of candidatePaths) {
+    if (fs.existsSync(candidate)) {
+      try {
+        const raw = fs.readFileSync(candidate, "utf8");
+        return JSON.parse(raw);
+      } catch (e) {
+        throw new Error(`Failed to parse service account file at ${candidate}: ${e.message}`);
+      }
+    }
   }
 
   throw new Error(
-    "Firebase credentials not found. On Render, set the FIREBASE_SERVICE_ACCOUNT environment variable with your Firebase service account JSON (or base64-encoded in FIREBASE_SERVICE_ACCOUNT_BASE64). For local development, place serviceAccountKey.json in server/config/."
+    "Firebase credentials not found. On Render, set the FIREBASE_SERVICE_ACCOUNT_BASE64 or FIREBASE_SERVICE_ACCOUNT environment variable, or add a Secret File named 'serviceAccountKey.json'."
   );
 }
 

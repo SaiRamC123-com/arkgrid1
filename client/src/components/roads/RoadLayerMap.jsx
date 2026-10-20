@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { MapContainer, Polyline, CircleMarker, Marker, Tooltip } from "react-leaflet";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/Mapkit";
 import { ROAD_STATUS } from "./roadMeta";
 
 const ll = (coords) => coords.map((p) => [p.lat, p.lng]);

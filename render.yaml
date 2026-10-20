@@ -34,9 +34,9 @@ services:
       - key: ML_API_KEY
         sync: false
 
-  # ArkGrid Python FastAPI ML Service (Already deployed or blueprint reference)
+  # ArkGrid Python FastAPI ML Service
   - type: web
-    name: arkgrid-ml-service
+    name: arkgrid1
     runtime: python
     rootDir: ml-service
     buildCommand: pip install -r requirements.txt

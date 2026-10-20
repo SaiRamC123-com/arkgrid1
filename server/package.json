@@ -8,7 +8,7 @@
     "dev": "node --watch server.js",
     "doctor": "node scripts/doctor.js",
     "seed": "node scripts/seed.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test services/*.test.js controllers/*.test.js utils/*.test.js"
   },
   "keywords": [],
   "author": "",

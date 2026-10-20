@@ -11,7 +11,7 @@ load_dotenv()
 
 from clustering.dbscan_model import HDBSCAN, cluster_events  # noqa: E402
 from flood_risk.model import get_model  # noqa: E402
-from flood_risk.service import assess  # noqa: E402
+from flood_risk.service import WeatherUnavailableError, assess  # noqa: E402
 from simulator.flood_sim import simulate_rain, simulate_surge  # noqa: E402
 API_KEY = os.getenv("ML_API_KEY", "")
 if not API_KEY:
@@ -108,7 +108,10 @@ def cluster(req: ClusterRequest):
 
 @app.post("/flood-risk", dependencies=[Depends(require_key)])
 def flood_risk(req: RiskRequest):
-    return assess(req.lat, req.lng, req.radius_m, req.grid, req.rain_24h_mm, req.rain_1h_mm, req.soil_perm)
+    try:
+        return assess(req.lat, req.lng, req.radius_m, req.grid, req.rain_24h_mm, req.rain_1h_mm, req.soil_perm)
+    except WeatherUnavailableError as err:
+        raise HTTPException(status_code=503, detail=str(err)) from err
 
 
 @app.get("/flood-risk/model", dependencies=[Depends(require_key)])

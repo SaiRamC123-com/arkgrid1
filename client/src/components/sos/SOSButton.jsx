@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 const SECONDS = 5;
 
-export default function SOSButton({ onActivate, disabled }) {
+export default function SOSButton({ onActivate, onStart, onCancel, status, disabled }) {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function SOSButton({ onActivate, disabled }) {
   }, [count]);
 
   const start = () => {
-    if (disabled) return;
+    if (disabled || count !== null || onStart?.() === false) return;
     navigator.vibrate?.(150);
     setCount(SECONDS);
   };
@@ -45,7 +45,7 @@ export default function SOSButton({ onActivate, disabled }) {
                      disabled:opacity-60"
         >
           <span className="font-display text-6xl font-bold tracking-wider text-white drop-shadow">SOS</span>
-          <span className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Tap to send</span>
+          <span className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Tap to start</span>
         </motion.button>
       </div>
 
@@ -57,7 +57,7 @@ export default function SOSButton({ onActivate, disabled }) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-navy-950/90 backdrop-blur-xl"
           >
-            <p className="font-display text-xl font-semibold text-ark-coral">Sending SOS in</p>
+            <p className="font-display text-xl font-semibold text-ark-coral">Activating SOS in</p>
             <div className="relative h-64 w-64">
               <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
                 <defs>
@@ -85,11 +85,14 @@ export default function SOSButton({ onActivate, disabled }) {
                 </motion.span>
               </AnimatePresence>
             </div>
-            <p className="max-w-xs text-center text-sm text-slate-400">
-              Your location and medical info will be sent. Works offline and syncs automatically.
+            <p role="status" aria-live="polite" className="max-w-xs text-center text-sm text-slate-300">
+              {status || "Preparing your SOS…"}
             </p>
             <button
-              onClick={() => setCount(null)}
+              onClick={() => {
+                setCount(null);
+                onCancel?.();
+              }}
               className="flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-8 py-3 font-semibold hover:bg-white/20"
             >
               <X size={18} /> Cancel

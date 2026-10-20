@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const { db, FieldValue } = require("../config/firebaseAdmin");
+const { db, FieldValue, Timestamp } = require("../config/firebaseAdmin");
 const getBucket = require("../config/storage");
 const { validCoords } = require("../utils/geo");
 const { checkRate } = require("../utils/rateLimit");
@@ -62,6 +62,31 @@ const shape = (d, uid) => {
   };
 };
 
+exports.list = async (req, res, next) => {
+  try {
+    const snap = await db.collection("reports").limit(300).get();
+    const now = Date.now();
+    const reports = [];
+    for (const d of snap.docs) {
+      try {
+        const report = d.data();
+        const created = report.createdAt?.toMillis?.() || now;
+        const updated = report.updatedAt?.toMillis?.() || created;
+        if (now - created > WINDOW_MS) continue;
+        if (report.status === "rejected") continue;
+        if (report.status === "resolved" && now - updated > 3 * 3600 * 1000) continue;
+        reports.push(shape(d, req.user.uid));
+      } catch (err) {
+        console.warn("Skipping malformed report", d.id, err.message);
+      }
+    }
+    reports.sort((a, b) => (Date.parse(b.createdAt) || 0) - (Date.parse(a.createdAt) || 0));
+    res.json({ reports });
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.create = async (req, res, next) => {
   try {
     const b = req.body || {};
@@ -75,6 +100,14 @@ exports.create = async (req, res, next) => {
     if (!validCoords(lat, lng)) throw httpError(400, "A location is required");
     const file = req.file;
     if (!description && !file) throw httpError(400, "Add a photo or a short description");
+
+    // Offline retries must never create two reports
+    const clientId = String(b.clientId || "");
+    const ref = /^[a-zA-Z0-9-]{16,64}$/.test(clientId)
+      ? db.collection("reports").doc(`${uid}_${clientId}`)
+      : db.collection("reports").doc();
+    const prev = await ref.get();
+    if (prev.exists) return res.json({ report: shape(prev, uid), duplicate: true });
 
     let mime = null;
     if (file) {
@@ -95,8 +128,11 @@ exports.create = async (req, res, next) => {
       }
     }
 
+    // A report saved offline keeps the time it was written, not the time it arrived
+    const cap = new Date(b.capturedAt);
+    const capOk = b.capturedAt && !isNaN(cap) && cap.getTime() <= Date.now() + 60000 && cap.getTime() > Date.now() - 7 * 86400000;
+
     const user = (await db.collection("users").doc(uid).get()).data();
-    const ref = db.collection("reports").doc();
     await ref.set({
       uid,
       authorName: user?.name || "Citizen",
@@ -110,45 +146,19 @@ exports.create = async (req, res, next) => {
       confirmedBy: [],
       aiStatus: "pending",
       ai: null,
-      createdAt: FieldValue.serverTimestamp(),
+      createdAt: capOk ? Timestamp.fromDate(cap) : FieldValue.serverTimestamp(),
       updatedAt: FieldValue.serverTimestamp(),
     });
 
     res.status(201).json({ report: shape(await ref.get(), uid), photoFailed });
     scheduleCluster(3000);
 
-    // AI classification runs in the background (assist only, never blocks the report)
     classifyReport({ type: b.type, description, photo: file && mime ? { buffer: file.buffer, mime } : null })
       .then((ai) => ref.update({ ai, aiStatus: "done" }).then(() => scheduleCluster(3000)))
       .catch((e) => {
         console.error("AI classify failed:", e.message);
         return ref.update({ aiStatus: "failed" }).catch(() => {});
       });
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.list = async (req, res, next) => {
-  try {
-    const snap = await db.collection("reports").limit(300).get(); // no orderBy, so no index is needed
-    const now = Date.now();
-    const reports = [];
-    for (const d of snap.docs) {
-      try {
-        const s = d.data();
-        const created = s.createdAt?.toMillis?.() || now;
-        const updated = s.updatedAt?.toMillis?.() || created;
-        if (now - created > WINDOW_MS) continue;
-        if (s.status === "rejected") continue;
-        if (s.status === "resolved" && now - updated > 3 * 3600 * 1000) continue;
-        reports.push(shape(d, req.user.uid));
-      } catch (e) {
-        console.warn("Skipping bad report", d.id, e.message);
-      }
-    }
-    reports.sort((a, b) => (Date.parse(b.createdAt) || 0) - (Date.parse(a.createdAt) || 0));
-    res.json({ reports });
   } catch (err) {
     next(err);
   }

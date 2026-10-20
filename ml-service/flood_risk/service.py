@@ -7,6 +7,10 @@ from .terrain import build_grid, derive, get_elevation
 from .weather import fetch_rain
 
 
+class WeatherUnavailableError(RuntimeError):
+    """Raised when a live flood assessment cannot obtain its required rainfall input."""
+
+
 def assess(lat, lng, radius_m, n, rain_24h, rain_1h, soil):
     LAT, LNG, dlat, dlng, cell_m = build_grid(lat, lng, radius_m, n)
     elev, elev_src = get_elevation(LAT, LNG)
@@ -25,8 +29,9 @@ def assess(lat, lng, radius_m, n, rain_24h, rain_1h, soil):
             rain_src = "Open-Meteo forecast (past 24 h and next 24 h)"
         except Exception as e:  # noqa: BLE001
             print(f"[weather] failed: {e}")
-            r24 = r1 = 0.0
-            rain_src = "unavailable (assumed 0 mm)"
+            raise WeatherUnavailableError(
+                "Open-Meteo rainfall is unavailable; the flood-risk model did not run."
+            ) from e
 
     N = elev.size
     X = np.column_stack([elev.ravel(), slope.ravel(), relief.ravel(), hal.ravel(), np.full(N, soil), np.full(N, r24), np.full(N, r1)])

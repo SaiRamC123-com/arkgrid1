@@ -1,6 +1,6 @@
 import L from "leaflet";
 import { MapContainer, Marker, Tooltip, CircleMarker } from "react-leaflet";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/Mapkit";
 import { REPORT_TYPES, pinHex } from "./reportMeta";
 
 const pin = (r, selected) =>

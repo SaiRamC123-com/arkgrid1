@@ -1,6 +1,6 @@
 import L from "leaflet";
 import { MapContainer, Marker, Tooltip, Circle } from "react-leaflet";
-import { DarkTiles, FitBounds, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, youIcon } from "../map/Mapkit";
 import { bandOf } from "../../utils/mcda";
 
 const pin = (rank, hex, selected) =>

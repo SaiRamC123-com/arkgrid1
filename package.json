@@ -11,7 +11,7 @@
     "dev:client": "npm --prefix client dev",
     "doctor": "npm --prefix server run doctor",
     "seed": "npm --prefix server run seed",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm --prefix server test"
   },
   "keywords": [],
   "author": "",

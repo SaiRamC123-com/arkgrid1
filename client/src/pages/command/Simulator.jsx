@@ -11,7 +11,7 @@ import { errMsg } from "../../utils/errMsg";
 import { timeAgo } from "../../utils/geo";
 import GlassCard from "../../components/ui/GlassCard";
 import Button from "../../components/ui/Button";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../../components/map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../../components/map/Mapkit";
 import SimLayer from "../../components/sim/SimLayer";
 import ScenarioControls from "../../components/sim/ScenarioControls";
 import ExposurePanel from "../../components/sim/ExposurePanel";

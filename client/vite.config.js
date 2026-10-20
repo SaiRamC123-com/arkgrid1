@@ -7,23 +7,23 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico"],
+      includeAssets: ["favicon.svg", "icon.svg"],
       manifest: {
         name: "ArkGrid",
         short_name: "ArkGrid",
         description: "Flood response intelligence",
-        theme_color: "#0b1220",
-        background_color: "#0b1220",
+        theme_color: "#F7F9FC",
+        background_color: "#F7F9FC",
         display: "standalone",
         start_url: "/",
         icons: [
-          { src: "/pwa-192.png", sizes: "192x192", type: "image/png" },
-          { src: "/pwa-512.png", sizes: "512x512", type: "image/png" },
+          { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" },
         ],
       },
       workbox: {
         navigateFallback: "/index.html",
         globPatterns: ["**/*.{js,css,html,svg,png,ico,woff2}"],
+        importScripts: ["/sos-sync.js"],
         runtimeCaching: [
           {
             // map tiles: cache what the user has already viewed

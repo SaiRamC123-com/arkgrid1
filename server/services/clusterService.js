@@ -1,6 +1,7 @@
 const { admin, db, FieldValue, Timestamp } = require("../config/firebaseAdmin");
 
 const ml = require("./mlClient");
+const mlError = require("../utils/mlError");
 const { distanceM, validCoords } = require("../utils/geo");
 const PARAMS = {
   algorithm: process.env.CLUSTER_ALGORITHM === "hdbscan" ? "hdbscan" : "dbscan",
@@ -93,6 +94,7 @@ async function clusterLocated(located) {
     if (!validClusters(r.clusters, payload)) throw new Error("ML reply failed validation");
     return { clusters: r.clusters, engine: `ml-${r.meta?.algorithm || PARAMS.algorithm}` };
   } catch (err) {
+    if (!mlError.isFallbackEligible(err)) throw err;
     console.warn("ML service unavailable, using fallback clustering:", err.message);
     return { clusters: fallbackCluster(payload, PARAMS), engine: "fallback" };
   }

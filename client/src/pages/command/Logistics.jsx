@@ -13,7 +13,7 @@ import { errMsg } from "../../utils/errMsg";
 import GlassCard from "../../components/ui/GlassCard";
 import Button from "../../components/ui/Button";
 import Loader from "../../components/ui/Loader";
-import { DarkTiles, FitBounds } from "../../components/map/MapKit";
+import { DarkTiles, FitBounds } from "../../components/map/Mapkit";
 import StockCard from "../../components/logistics/StockCard";
 import TripCard from "../../components/logistics/TripCard";
 import RatesPanel from "../../components/logistics/RatesPanel";
@@ -172,7 +172,7 @@ export default function Logistics() {
           )}
 {data.untracked.length > 0 && <AddStock untracked={data.untracked} onSaved={load} />}
           {rows.map((r) => <StockCard key={r.id} row={r} th={th} selected={r.id === selectedId} onSelect={setSelectedId} onSaved={load} />)}
-          {rows.length === 0 && <GlassCard className="text-center text-sm text-slate-400">No facility has stock recorded yet. Open a facility here after adding stock, or load demo stock (commander) after loading demo facilities on the Shelters page.</GlassCard>}
+          {rows.length === 0 && <GlassCard className="text-center text-sm text-slate-400">No facility has stock recorded yet. Facility stock will appear here after it is recorded for a registered facility.</GlassCard>}
           
         </div>
       </div>

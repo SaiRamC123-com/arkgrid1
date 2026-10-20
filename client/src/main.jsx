@@ -7,6 +7,7 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import ErrorBoundary from "./components/layout/ErrorBoundary";
 import { registerSW } from "virtual:pwa-register";
+import "leaflet/dist/leaflet.css";
 import "./index.css";
 registerSW({ immediate: true });
 

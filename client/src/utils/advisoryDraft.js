@@ -13,6 +13,6 @@ export function draftAdvisory(sim, severity) {
   }[severity];
   return {
     title: `${head}: planning scenario`,
-    message: `Planning scenario, not a forecast: ${what}. Parts of the area near you could flood${lead ? ` within about ${lead} minutes` : ""}. ${action} Do not walk or drive through floodwater. Open Shelters in ArkGrid to find the nearest open shelter. Follow official instructions.`.slice(0, 500),
+    message: `Planning scenario, not a forecast: ${what}. Parts of the area near you could flood${lead ? ` within about ${lead} minutes` : ""}. ${action} Do not walk or drive through floodwater. Check local emergency-management sources for verified shelter locations. Follow official instructions.`.slice(0, 500),
   };
 }

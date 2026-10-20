@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, Tooltip, Circle, CircleMarker, Polyline } from "react-leaflet";
-import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/MapKit";
+import { DarkTiles, FitBounds, ClickPicker, youIcon } from "../map/Mapkit";
 import RiskLayer from "../map/RiskLayer";
 import { TEAM_STATUS, TEAM_TYPES, INFRA_STATUS, INFRA_KINDS } from "./opsMeta";
 import { SEV } from "../incidents/incidentMeta";

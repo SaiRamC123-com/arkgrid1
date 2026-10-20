@@ -1,5 +1,5 @@
 const { admin, db, FieldValue, Timestamp } = require("../config/firebaseAdmin");
-const { validCoords } = require("../utils/geo");
+const { parseSosDetails, parseSosLocation: parseLoc } = require("../utils/sosPayload");
 const { logActivity, familyIdsOf } = require("../utils/activity");
 const { scheduleCluster } = require("../services/clusterService");
 const NEEDS = ["trapped", "medical", "water", "food", "boat", "shelter"];
@@ -13,14 +13,6 @@ const httpError = (status, message) => Object.assign(new Error(message), { statu
 const str = (v, max) => String(v ?? "").trim().slice(0, max);
 const iso = (ts) => ts?.toDate?.().toISOString() || null;
 
-function parseLoc(b) {
-  if (b.lat === undefined || b.lat === null || b.lng === undefined || b.lng === null) return null;
-  const lat = Number(b.lat);
-  const lng = Number(b.lng);
-  if (!validCoords(lat, lng)) throw httpError(400, "Invalid coordinates");
-  return { lat, lng, accuracy: Math.max(0, Math.round(Number(b.accuracy) || 0)) };
-}
-
 // Accept client timestamps only if sane (not future, not older than 7 days)
 function parseDate(v) {
   const d = new Date(v);
@@ -28,6 +20,12 @@ function parseDate(v) {
   const now = Date.now();
   if (d.getTime() > now + 60000 || d.getTime() < now - 7 * 86400000) return null;
   return d;
+}
+
+function parseLocationDate(value, fallback) {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime()) || date.getTime() > Date.now() + 60000) return fallback;
+  return date;
 }
 
 const shape = (d) => {
@@ -39,10 +37,16 @@ const shape = (d) => {
     phone: s.phone,
     status: s.status,
     resolution: s.resolution || null,
+    clientId: s.clientId || null,
     location: s.location || null,
+    locationSource: s.locationSource || s.location?.source || null,
     needs: s.needs || [],
     peopleCount: s.peopleCount || 1,
     message: s.message || "",
+    landmark: s.landmark || "",
+    locality: s.locality || "",
+    trappedDescription: s.trappedDescription || "",
+    locationDetailsConfirmed: s.locationDetailsConfirmed === true,
     medical: s.medical || null,
     delayedSec: s.delayedSec || 0,
     pingCount: s.pingCount || 0,
@@ -126,6 +130,7 @@ exports.createSOS = async (req, res, next) => {
     if (!CLIENT_ID_RE.test(clientId)) throw httpError(400, "Invalid clientId");
 
     const loc = parseLoc(b);
+    const details = parseSosDetails(b);
     const needs = (Array.isArray(b.needs) ? b.needs : []).filter((n) => NEEDS.includes(n));
     const peopleCount = Math.min(50, Math.max(1, parseInt(b.peopleCount, 10) || 1));
     const message = str(b.message, 200);
@@ -143,8 +148,10 @@ exports.createSOS = async (req, res, next) => {
       const upd = { lastPingAt: FieldValue.serverTimestamp(), pingCount: FieldValue.increment(1) };
       if (loc) {
         upd.location = loc;
-        upd.locationAt = Timestamp.fromDate(parseDate(b.capturedAt) || new Date());
+        upd.locationAt = Timestamp.fromDate(parseLocationDate(b.capturedAt, new Date()));
+        upd.locationSource = loc.source;
       }
+      if (details?.locationDetailsConfirmed) Object.assign(upd, details);
       if (needs.length) upd.needs = FieldValue.arrayUnion(...needs);
       await doc.ref.update(upd);
       return res.json({ id: doc.id, merged: true });
@@ -163,10 +170,17 @@ exports.createSOS = async (req, res, next) => {
       status: "active",
       clientId,
       location: loc,
-      locationAt: loc ? Timestamp.fromDate(capturedAt) : null,
+      locationAt: loc ? Timestamp.fromDate(parseLocationDate(b.capturedAt, capturedAt)) : null,
+      locationSource: loc?.source || null,
       needs,
       peopleCount,
       message,
+      ...(details || {
+        landmark: "",
+        locality: "",
+        trappedDescription: "",
+        locationDetailsConfirmed: false,
+      }),
       medical: user.medical || null,
       delayedSec,
       pingCount: 0,
@@ -204,18 +218,23 @@ exports.pingSOS = async (req, res, next) => {
     const { ref, data } = await getOwnSOS(req.params.id, req.user.uid);
     if (data.status !== "active") throw httpError(409, "SOS is no longer active");
     const loc = parseLoc(req.body || {});
-    if (!loc) throw httpError(400, "lat and lng are required");
+    const details = parseSosDetails(req.body || {});
+    if (!loc && !details) throw httpError(400, "Location or SOS details are required");
 
-    await ref.update({
-      location: loc,
-      locationAt: FieldValue.serverTimestamp(),
+    const update = {
       lastPingAt: FieldValue.serverTimestamp(),
       pingCount: FieldValue.increment(1),
-    });
-    await db.collection("users").doc(req.user.uid).update({
-      lastLocation: loc,
-      lastLocationAt: FieldValue.serverTimestamp(),
-    });
+    };
+    if (details) Object.assign(update, details);
+    if (loc) {
+      const locationAt = Timestamp.fromDate(parseLocationDate(req.body?.capturedAt, new Date()));
+      Object.assign(update, { location: loc, locationAt, locationSource: loc.source });
+      await db.collection("users").doc(req.user.uid).update({
+        lastLocation: loc,
+        lastLocationAt: locationAt,
+      });
+    }
+    await ref.update(update);
     res.json({ ok: true });
   } catch (err) {
     next(err);
