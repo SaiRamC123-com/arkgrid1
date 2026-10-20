@@ -16,7 +16,16 @@ export async function getHeatGrid({ latitude, longitude, radiusKm, refresh = fal
     });
     return response.data;
   } catch (apiError) {
-    if (apiError.response?.status !== 404 || signal?.aborted) throw apiError;
+       const status = apiError.response?.status;
+    // Fall back to Open-Meteo directly when the ArkGrid route is missing (404), rate limited (429),
+    // failing upstream (5xx), or unreachable. Validation errors (400) are real and are not hidden.
+    const canFallBack = !apiError.response || status === 404 || status === 429 || status >= 500;
+    if (!canFallBack || signal?.aborted) throw apiError;
+    const reason = status === 404
+      ? "The configured ArkGrid API is missing its weather route (404); weather was loaded directly from Open-Meteo."
+      : !apiError.response
+        ? "The ArkGrid API could not be reached; weather was loaded directly from Open-Meteo."
+        : `The ArkGrid API could not get weather from Open-Meteo (${status}); weather was loaded directly from Open-Meteo.`;
     try {
       const locations = buildWeatherLocations(latitude, longitude, radiusKm);
       const response = await axios.get(OPEN_METEO_FORECAST_URL, {
@@ -33,10 +42,10 @@ export async function getHeatGrid({ latitude, longitude, radiusKm, refresh = fal
         },
         headers: { Accept: "application/json" },
       });
-      return normalizeOpenMeteoGrid(response.data, latitude, longitude, radiusKm);
+      return normalizeOpenMeteoGrid(response.data, latitude, longitude, radiusKm, Date.now(), reason);
     } catch (providerError) {
       if (signal?.aborted) throw providerError;
-      const error = new Error(`ArkGrid's weather route returned 404 and direct Open-Meteo retrieval failed: ${providerError.message}`);
+      const error = new Error(`The ArkGrid weather route failed and direct Open-Meteo retrieval failed: ${providerError.message}`);
       error.providerFallbackError = true;
       error.cause = providerError;
       throw error;

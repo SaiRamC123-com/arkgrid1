@@ -60,8 +60,15 @@ export function normalizeOpenMeteoLocation(data, point) {
   };
 }
 
-export function normalizeOpenMeteoGrid(payload, latitude, longitude, radiusKm, now = Date.now()) {
-  const locations = buildWeatherLocations(latitude, longitude, radiusKm);
+export function normalizeOpenMeteoGrid(
+  payload,
+  latitude,
+  longitude,
+  radiusKm,
+  now = Date.now(),
+  warning = "The configured ArkGrid API is missing its weather route (404); weather was loaded directly from Open-Meteo."
+) {
+    const locations = buildWeatherLocations(latitude, longitude, radiusKm);
   const results = Array.isArray(payload) ? payload : [payload];
   if (results.length !== locations.length) {
     throw new Error(`Open-Meteo returned ${results.length} locations; expected ${locations.length}.`);
@@ -82,6 +89,6 @@ export function normalizeOpenMeteoGrid(payload, latitude, longitude, radiusKm, n
     attribution: "Weather data by Open-Meteo, using weather forecast models.",
     retrievedAt: new Date(now).toISOString(),
     stale: false,
-    warning: "The configured ArkGrid API is missing its weather route (404); weather was loaded directly from Open-Meteo.",
+        warning,
   };
 }
