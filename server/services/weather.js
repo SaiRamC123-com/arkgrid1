@@ -36,7 +36,8 @@ function buildLocations(lat, lng, radiusKm) {
 }
 
 function cacheKey(lat, lng, radiusKm) {
-  return `${lat.toFixed(4)}:${lng.toFixed(4)}:${radiusKm}`;
+  // ~1 km precision: nearby clicks share one cached result instead of each hitting Open-Meteo
+  return `${lat.toFixed(2)}:${lng.toFixed(2)}:${radiusKm}`;
 }
 
 function normalizeLocation(data, point) {
