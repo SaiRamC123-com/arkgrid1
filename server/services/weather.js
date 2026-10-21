@@ -37,7 +37,7 @@ function buildLocations(lat, lng, radiusKm) {
 }
 
 function cacheKey(lat, lng, radiusKm) {
-  return `${lat.toFixed(4)}:${lng.toFixed(4)}:${radiusKm}`;
+return `${lat.toFixed(2)}:${lng.toFixed(2)}:${radiusKm}`;
 }
 
 function normalizeLocation(data, point) {
