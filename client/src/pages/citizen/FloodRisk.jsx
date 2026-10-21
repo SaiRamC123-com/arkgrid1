@@ -10,6 +10,7 @@ import { errMsg } from "../../utils/errMsg";
 import GlassCard from "../../components/ui/GlassCard";
 import Button from "../../components/ui/Button";
 import RiskMap from "../../components/risk/riskMap";
+import { fetchRainZones, rainZonesMatch, withRainZones } from "../../utils/rainZones";
 import RainOutlook from "../../components/risk/RainOutlook";
 import {
   TierBar,
@@ -44,6 +45,7 @@ export default function FloodRisk() {
   const [rain24, setRain24] = useState(120);
   const [result, setResult] = useState(null);
   const [monitoring, setMonitoring] = useState(null);
+    const [rainZones, setRainZones] = useState(null);
   const [loading, setLoading] = useState(false);
   const [monitoringLoading, setMonitoringLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -83,8 +85,9 @@ export default function FloodRisk() {
         ...(isStaff && scenarioOn ? { rain24, rain1: Math.round(rain24 * 0.25) } : {}),
       });
       const monitoringRequest = riskApi.monitor({ lat: c.lat, lng: c.lng, radiusKm, grid });
-      const [modelOutcome, monitoringOutcome] = await Promise.allSettled([modelRequest, monitoringRequest]);
-
+      const rainRequest = fetchRainZones({ lat: c.lat, lng: c.lng, radiusKm, grid });
+      const [modelOutcome, monitoringOutcome, rainOutcome] = await Promise.allSettled([modelRequest, monitoringRequest, rainRequest]);
+      setRainZones(rainOutcome.status === "fulfilled" ? rainOutcome.value : null);
       if (modelOutcome.status === "fulfilled") {
         setResult(modelOutcome.value);
         setMlOffline(false);
@@ -134,8 +137,9 @@ export default function FloodRisk() {
     && Math.abs(monitoring.center.lng - center.lng) < 0.00005
     && monitoring.radiusKm === radiusKm
     && monitoring.grid === grid;
-  const activeMonitoring = monitoringMatchesCenter ? monitoring : null;
-
+  const activeRain = rainZonesMatch(rainZones, center, radiusKm, grid) ? rainZones : null;
+  const activeMonitoring = withRainZones(monitoringMatchesCenter ? monitoring : null, activeRain);
+  
   const currentBounds = activeLayer === "ml" && activeResult?.bounds
     ? activeResult.bounds
     : activeMonitoring?.bounds || activeResult?.bounds;
