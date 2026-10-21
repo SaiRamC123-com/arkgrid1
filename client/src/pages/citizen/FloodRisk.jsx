@@ -346,9 +346,8 @@ export default function FloodRisk() {
       )}
 
       {selected && <CellDetail cell={selected} onClose={() => setSelected(null)} />}
-
+      <RainOutlook center={center} />
       {/* Risk Breakdown & Rainfall Panels */}
-            <RainOutlook center={center} />
       <div className="grid gap-6 md:grid-cols-2">
         {activeLayer === "ml" && activeResult ? (
           <TierBar summary={activeResult.summary} />
