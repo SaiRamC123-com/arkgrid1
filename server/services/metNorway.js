@@ -1,7 +1,7 @@
 // MET Norway Locationforecast 2.0 (api.met.no): free, keyless backup weather source.
 // Pure helpers only (no network, no axios) so they can be unit-tested offline.
 
-const ENDPOINT = "https://api.met.no/weatherapis/locationforecast/2.0/compact";
+const ENDPOINT = "https://api.met.no/weatherapi/locationforecast/2.0/compact";
 const SOURCE = "MET Norway Locationforecast (backup; Open-Meteo unavailable)";
 const ATTRIBUTION = "Weather data from MET Norway (api.met.no), licensed CC BY 4.0 / NLOD. Model forecast, not an official warning.";
 
