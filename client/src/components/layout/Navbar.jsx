@@ -23,17 +23,19 @@ export default function Navbar({ onMenu }) {
       <div className="flex items-center gap-3">
         {profile ? (
           <>
-            <Badge tone={roleTone[profile.role]} className="capitalize">{profile.role}</Badge>
+            {profile.role !== "citizen" && (
+              <Badge tone={roleTone[profile.role]} className="capitalize">{profile.role}</Badge>
+            )}
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-display font-bold text-blue-800">
               {profile.name.charAt(0).toUpperCase()}
             </div>
-          <button onClick={handleLogout} className="rounded-xl p-2 text-slate-500 hover:bg-red-50 hover:text-red-700" aria-label="Logout">
-            <LogOut size={20} />
-          </button>
+            <button onClick={handleLogout} className="rounded-xl p-2 text-slate-500 hover:bg-red-50 hover:text-red-700" aria-label="Logout">
+              <LogOut size={20} />
+            </button>
           </>
         ) : (
-          <Link to="/login" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50">
-            <LogIn size={15} /> Account sign in
+          <Link to="/login" className="inline-flex items-center gap-2 rounded-xl px-2 py-2 text-xs font-medium text-slate-400 hover:text-slate-700">
+            <LogIn size={14} /> Staff login
           </Link>
         )}
       </div>
