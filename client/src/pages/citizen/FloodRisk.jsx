@@ -10,6 +10,7 @@ import { errMsg } from "../../utils/errMsg";
 import GlassCard from "../../components/ui/GlassCard";
 import Button from "../../components/ui/Button";
 import RiskMap from "../../components/risk/riskMap";
+import RainOutlook from "../../components/risk/RainOutlook";
 import {
   TierBar,
   RainPanel,
@@ -347,6 +348,7 @@ export default function FloodRisk() {
       {selected && <CellDetail cell={selected} onClose={() => setSelected(null)} />}
 
       {/* Risk Breakdown & Rainfall Panels */}
+            <RainOutlook center={center} />
       <div className="grid gap-6 md:grid-cols-2">
         {activeLayer === "ml" && activeResult ? (
           <TierBar summary={activeResult.summary} />
