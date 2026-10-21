@@ -37,8 +37,7 @@ function buildLocations(lat, lng, radiusKm) {
 }
 
 function cacheKey(lat, lng, radiusKm) {
-  // ~1 km precision: nearby clicks share one cached result instead of each hitting Open-Meteo
-  return `${lat.toFixed(2)}:${lng.toFixed(2)}:${radiusKm}`;
+  return `${lat.toFixed(4)}:${lng.toFixed(4)}:${radiusKm}`;
 }
 
 function normalizeLocation(data, point) {
@@ -93,13 +92,13 @@ function normalizeLocation(data, point) {
 }
 
 function responsePayload(points, lat, lng, radiusKm, retrievedAt, stale, provider = {}) {
-const center = points.find((point) => point.row === 0 && point.col === 0);
+  const center = points.find((point) => point.row === 0 && point.col === 0);
   return {
     points,
     center,
     requestedLocation: { latitude: lat, longitude: lng },
     radiusKm,
-        source: provider.source || SOURCE,
+    source: provider.source || SOURCE,
     attribution: provider.attribution || "Weather data by Open-Meteo, using weather forecast models.",
     retrievedAt,
     stale,
@@ -144,6 +143,7 @@ async function fetchForecast(lat, lng, radiusKm) {
     throw err;
   }
 }
+
 // Keyless backup provider, used only when Open-Meteo fails (for example HTTP 429 on a shared host IP).
 async function fetchMetForecast(lat, lng, radiusKm) {
   const locations = buildLocations(lat, lng, radiusKm);
@@ -173,6 +173,7 @@ async function fetchMetForecast(lat, lng, radiusKm) {
   }
   return points;
 }
+
 exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
   if (!validCoords(lat, lng)) throw Object.assign(new Error("Valid latitude and longitude are required"), { status: 400 });
   if (![10, 25, 50].includes(radiusKm)) {
@@ -188,7 +189,7 @@ exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
 
   const request = (async () => {
     try {
-            let points;
+      let points;
       let provider = {};
       try {
         points = await fetchForecast(lat, lng, radiusKm);
@@ -204,6 +205,7 @@ exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
         };
       }
       const payload = responsePayload(points, lat, lng, radiusKm, new Date().toISOString(), false, provider);
+      cache.set(key, { payload, cachedAt: Date.now() });
       if (cache.size > 100) cache.delete(cache.keys().next().value);
       return payload;
     } catch (err) {
@@ -232,3 +234,4 @@ exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
 
 exports._normalizeLocation = normalizeLocation;
 exports._buildLocations = buildLocations;
+exports._fetchMetForecast = fetchMetForecast;
