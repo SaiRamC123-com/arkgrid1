@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Mail, Lock } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
@@ -32,8 +31,8 @@ export default function Login() {
   return (
     <AuthShell>
       <GlassCard className="p-8">
-        <h2 className="font-display text-3xl font-bold">Welcome back</h2>
-        <p className="mb-7 mt-1 text-sm text-slate-400">Sign in to your ArkGrid account</p>
+        <h2 className="font-display text-3xl font-bold">Staff sign in</h2>
+        <p className="mb-7 mt-1 text-sm text-slate-400">For responders and commanders</p>
 
         <form onSubmit={submit} className="space-y-5">
           <Input label="Email" icon={Mail} type="email" placeholder="you@example.com"
@@ -42,11 +41,6 @@ export default function Login() {
             value={form.password} onChange={set("password")} required />
           <Button type="submit" loading={loading} className="w-full">Sign In</Button>
         </form>
-
-        <p className="mt-6 text-center text-sm text-slate-400">
-          New to ArkGrid?{" "}
-          <Link to="/register" className="font-semibold text-ark-cyan hover:underline">Create account</Link>
-        </p>
       </GlassCard>
     </AuthShell>
   );
