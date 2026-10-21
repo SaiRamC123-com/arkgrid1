@@ -25,7 +25,6 @@ import LiveObservations from "./pages/citizen/LiveObservations";
 import HeatWave from "./pages/citizen/HeatWave";
 import DisasterHistory from "./pages/citizen/DisasterHistory";
 
-
 const home = (profile) => (profile.role === "citizen" ? "/citizen" : "/command");
 
 function PublicOnly({ children }) {
@@ -78,33 +77,32 @@ export default function App() {
       <Route path="/citizen/shelters" element={<Navigate to="/citizen" replace />} />
       <Route path="/command/shelters" element={<Navigate to="/command" replace />} />
 
+      {/* Citizen area: fully public, no login */}
       <Route path="/citizen" element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="observations" element={<LiveObservations />} />
         <Route path="heat-wave" element={<HeatWave />} />
         <Route path="disaster-history" element={<DisasterHistory />} />
-        <Route element={<ProtectedRoute roles={["citizen"]} />}>
-          {sub(
-            citizenNav.filter((item) => ![
-              "/citizen/observations",
-              "/citizen/heat-wave",
-              "/citizen/disaster-history",
-            ].includes(item.path)),
-            "/citizen"
-          )}
-        </Route>
+        {sub(
+          citizenNav.filter((item) => ![
+            "/citizen/observations",
+            "/citizen/heat-wave",
+            "/citizen/disaster-history",
+          ].includes(item.path)),
+          "/citizen"
+        )}
       </Route>
 
+      {/* Command area: login still required */}
       <Route element={<ProtectedRoute roles={["responder", "commander"]} />}>
         <Route path="/command" element={<AppLayout />}>
           <Route index element={<Dashboard />} />
           {sub(commandNav, "/command")}
         </Route>
       </Route>
-      <Route element={<ProtectedRoute />}>
-        <Route path="/about" element={<AppLayout />}>
-          <Route index element={<About />} />
-        </Route>
+
+      <Route path="/about" element={<AppLayout />}>
+        <Route index element={<About />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
