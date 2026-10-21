@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { validCoords } = require("../utils/geo");
+const met = require("./metNorway");
 
 const ENDPOINT = "https://api.open-meteo.com/v1/forecast";
 const CACHE_TTL_MS = Number(process.env.WEATHER_CACHE_TTL_MS) > 0
@@ -91,17 +92,18 @@ function normalizeLocation(data, point) {
   };
 }
 
-function responsePayload(points, lat, lng, radiusKm, retrievedAt, stale) {
-  const center = points.find((point) => point.row === 0 && point.col === 0);
+function responsePayload(points, lat, lng, radiusKm, retrievedAt, stale, provider = {}) {
+const center = points.find((point) => point.row === 0 && point.col === 0);
   return {
     points,
     center,
     requestedLocation: { latitude: lat, longitude: lng },
     radiusKm,
-    source: SOURCE,
-    attribution: "Weather data by Open-Meteo, using weather forecast models.",
+        source: provider.source || SOURCE,
+    attribution: provider.attribution || "Weather data by Open-Meteo, using weather forecast models.",
     retrievedAt,
     stale,
+    ...(provider.warning ? { warning: provider.warning } : {}),
   };
 }
 
@@ -142,7 +144,35 @@ async function fetchForecast(lat, lng, radiusKm) {
     throw err;
   }
 }
-
+// Keyless backup provider, used only when Open-Meteo fails (for example HTTP 429 on a shared host IP).
+async function fetchMetForecast(lat, lng, radiusKm) {
+  const locations = buildLocations(lat, lng, radiusKm);
+  const settled = await Promise.allSettled(
+    locations.map((point) =>
+      axios.get(met.ENDPOINT, {
+        timeout: 12000,
+        params: { lat: met.coord(point.latitude), lon: met.coord(point.longitude) },
+        headers: { Accept: "application/json", "User-Agent": met.userAgent() },
+      })
+    )
+  );
+  const now = Date.now();
+  const points = settled.flatMap((result, index) => {
+    if (result.status !== "fulfilled") return [];
+    const point = met.normalizeMetLocation(result.value.data, locations[index], now);
+    return point ? [point] : [];
+  });
+  if (!points.some((point) => point.row === 0 && point.col === 0)) {
+    const firstError = settled.find((r) => r.status === "rejected")?.reason;
+    console.error("[weather] MET Norway backup request failed", {
+      status: firstError?.response?.status || null,
+      code: firstError?.code || null,
+      message: firstError?.message || "No valid current temperature for the selected location",
+    });
+    throw firstError || new Error("MET Norway did not return valid current temperature data for the selected location");
+  }
+  return points;
+}
 exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
   if (!validCoords(lat, lng)) throw Object.assign(new Error("Valid latitude and longitude are required"), { status: 400 });
   if (![10, 25, 50].includes(radiusKm)) {
@@ -158,9 +188,22 @@ exports.getHeatGrid = async (lat, lng, radiusKm, forceRefresh = false) => {
 
   const request = (async () => {
     try {
-      const points = await fetchForecast(lat, lng, radiusKm);
-      const payload = responsePayload(points, lat, lng, radiusKm, new Date().toISOString(), false);
-      cache.set(key, { payload, cachedAt: Date.now() });
+            let points;
+      let provider = {};
+      try {
+        points = await fetchForecast(lat, lng, radiusKm);
+      } catch (openMeteoError) {
+        const status = openMeteoError.response?.status;
+        // 400-level errors other than 429 mean our request was wrong; a backup would hide a real bug.
+        if (status && status < 500 && status !== 429) throw openMeteoError;
+        points = await fetchMetForecast(lat, lng, radiusKm);
+        provider = {
+          source: met.SOURCE,
+          attribution: met.ATTRIBUTION,
+          warning: `Open-Meteo is unavailable${status ? ` (${status})` : ""}; showing the MET Norway model forecast instead. Times are UTC and the daily maximum and apparent temperature are not provided by this source.`,
+        };
+      }
+      const payload = responsePayload(points, lat, lng, radiusKm, new Date().toISOString(), false, provider);
       if (cache.size > 100) cache.delete(cache.keys().next().value);
       return payload;
     } catch (err) {
