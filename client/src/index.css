@@ -4,6 +4,9 @@
 
 html, body, #root { min-height: 100%; }
 
+/* Feature theme colours (set per page by AuroraBackground). Fallbacks = the original blue. */
+:root { --accent-rgb: 37 99 235; --accent2-rgb: 6 182 212; }
+
 body { @apply bg-navy-900 text-slate-800 font-sans antialiased; }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -11,14 +14,38 @@ body { @apply bg-navy-900 text-slate-800 font-sans antialiased; }
 ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
 
 @layer components {
-  .glass { @apply rounded-2xl border border-slate-200 bg-white shadow-panel; }
-  .glass-hover { @apply transition-all duration-150 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50; }
-  .text-gradient { @apply text-blue-700; }
+  .glass {
+    @apply rounded-2xl border border-white/70 bg-white/80 backdrop-blur-md;
+    box-shadow: 0 8px 28px -14px rgb(var(--accent-rgb) / .45), 0 1px 0 rgb(255 255 255 / .7) inset;
+    transition: box-shadow .35s ease, transform .2s ease, background-color .35s ease;
+  }
+  .glass-hover { @apply transition-all duration-200 hover:-translate-y-1 hover:bg-white/95; }
+  .glass-hover:hover { box-shadow: 0 16px 36px -14px rgb(var(--accent-rgb) / .6); }
+  .glass-hover:active { transform: translateY(0) scale(.985); }
+  .text-gradient {
+    background: linear-gradient(90deg, rgb(var(--accent-rgb)), rgb(var(--accent2-rgb)));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .btn-accent {
+    background-image: linear-gradient(120deg, rgb(var(--accent-rgb)), rgb(var(--accent2-rgb)), rgb(var(--accent-rgb)));
+    background-size: 200% 100%; background-position: 0% 0%;
+    box-shadow: 0 8px 20px -8px rgb(var(--accent-rgb) / .7);
+    transition: background-position .5s ease, box-shadow .3s ease, filter .2s ease;
+  }
+  .btn-accent:hover { background-position: 100% 0%; filter: saturate(1.15) brightness(1.05); }
+  .nav-item { transition: transform .18s ease, background-color .2s ease, color .2s ease, box-shadow .25s ease; }
+  .nav-item:hover { transform: translateX(4px); }
+  .nav-item:active { transform: translateX(2px) scale(.98); }
+  .nav-item-active {
+    background-image: linear-gradient(110deg, rgb(var(--accent-rgb)), rgb(var(--accent2-rgb)));
+    color: #fff; border-color: transparent;
+    box-shadow: 0 10px 22px -10px rgb(var(--accent-rgb) / .8);
+  }
   .input-glass {
     @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900
-           placeholder:text-slate-400 outline-none transition-colors
-           focus:border-blue-500 focus:ring-2 focus:ring-blue-100;
+           placeholder:text-slate-400 outline-none transition-colors;
   }
+  .input-glass:focus { border-color: rgb(var(--accent-rgb)); box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / .18); }
   .mono { @apply font-mono text-[0.8em] tracking-tight; }
   .label-caps { @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500; }
 }
@@ -67,3 +94,85 @@ body { @apply bg-navy-900 text-slate-800 font-sans antialiased; }
 
 /* Preserve the optional dark map theme for the no-key OpenStreetMap fallback. */
 .ark-dark-osm { filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9); }
+
+/* ---- Touch / click ripple (created by AuroraBackground) ---- */
+.tap-ripple {
+  position: fixed; z-index: 9999; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%;
+  pointer-events: none; background: radial-gradient(circle, rgb(var(--accent-rgb) / .45), rgb(var(--accent2-rgb) / .25) 60%, transparent 70%);
+  animation: tapRipple .65s ease-out forwards;
+}
+@keyframes tapRipple { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(7); opacity: 0; } }
+
+/* ---- Feature background scenes (see components/ui/scenes.js) ---- */
+.scene-blob {
+  position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--c), transparent 68%); filter: blur(30px);
+  animation: blobDrift var(--d, 24s) ease-in-out infinite alternate; will-change: transform;
+}
+@keyframes blobDrift { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(6vmax,4vmax,0) scale(1.12); } }
+
+.scene-dot {
+  position: absolute; bottom: -30px; left: var(--l); width: var(--sz); height: var(--sz); border-radius: 50%;
+  background: rgb(255 255 255 / .75); box-shadow: 0 0 16px rgb(var(--accent-rgb) / .45);
+  animation: dotRise var(--du) linear infinite; animation-delay: var(--dl);
+}
+@keyframes dotRise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 100% { transform: translateY(-110vh); opacity: 0; } }
+
+.scene-wave { position: absolute; left: 0; width: 200%; height: 22vh; bottom: 0; animation: waveSlide 14s linear infinite; }
+.scene-wave.w2 { height: 28vh; opacity: .9; animation-duration: 20s; animation-direction: reverse; }
+@keyframes waveSlide { to { transform: translateX(-50%); } }
+.scene-drop {
+  position: absolute; top: -20px; left: var(--l); width: 3px; height: 18px; border-radius: 3px;
+  background: linear-gradient(to bottom, transparent, rgb(var(--accent-rgb) / .55));
+  animation: dropFall var(--du) linear infinite; animation-delay: var(--dl);
+}
+@keyframes dropFall { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(105vh); opacity: 0; } }
+
+.scene-sun {
+  position: absolute; right: -8vmax; top: -8vmax; width: 34vmax; height: 34vmax; border-radius: 50%;
+  background: radial-gradient(circle, #fff7 0%, #fde047 28%, #fb923c66 52%, transparent 70%);
+  animation: sunPulse 5s ease-in-out infinite;
+}
+.scene-rays {
+  position: absolute; right: -14vmax; top: -14vmax; width: 46vmax; height: 46vmax; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgb(253 224 71 / .30) 0 6deg, transparent 6deg 18deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 28%, #000 40%, transparent 72%);
+  mask-image: radial-gradient(circle, transparent 28%, #000 40%, transparent 72%);
+  animation: spinSlow 60s linear infinite;
+}
+@keyframes sunPulse { 0%,100% { transform: scale(1); opacity: .95; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+
+.scene-ring {
+  position: absolute; right: 8%; top: 14%; width: 22vmax; height: 22vmax; margin: -11vmax -11vmax 0 0; border-radius: 50%;
+  border: 3px solid rgb(var(--accent-rgb) / .5); animation: ringOut 4.2s ease-out infinite; animation-delay: var(--dl);
+}
+@keyframes ringOut { 0% { transform: scale(.15); opacity: .9; } 100% { transform: scale(1.8); opacity: 0; } }
+
+.scene-radar {
+  position: absolute; right: 4%; top: 6%; width: 36vmax; height: 36vmax; border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 7vmax, rgb(var(--accent-rgb) / .22) 7vmax calc(7vmax + 2px));
+  border: 2px solid rgb(var(--accent-rgb) / .28);
+}
+.scene-sweep {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgb(var(--accent-rgb) / .38), transparent 28%);
+  animation: spinSlow 7s linear infinite;
+}
+
+.scene-grid {
+  position: absolute; inset: -60px;
+  background-image: linear-gradient(rgb(var(--accent-rgb) / .13) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--accent-rgb) / .13) 1px, transparent 1px);
+  background-size: 56px 56px; animation: gridMove 18s linear infinite;
+}
+@keyframes gridMove { to { transform: translate(56px, 56px); } }
+
+.scene-route {
+  position: absolute; left: -10%; width: 120%; height: 5px; border-radius: 3px;
+  background: repeating-linear-gradient(90deg, rgb(var(--accent-rgb) / .4) 0 28px, transparent 28px 56px);
+  animation: routeFlow 3s linear infinite;
+}
+.scene-route.r1 { top: 28%; transform: rotate(-8deg); }
+.scene-route.r2 { top: 62%; transform: rotate(6deg); animation-duration: 4.5s; animation-direction: reverse;
+  background: repeating-linear-gradient(90deg, rgb(var(--accent2-rgb) / .4) 0 28px, transparent 28px 56px); }
+@keyframes routeFlow { to { background-position: 56px 0; } }

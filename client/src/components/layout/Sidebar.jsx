@@ -13,9 +13,9 @@ export default function Sidebar({ items, onNavigate, showAbout = true }) {
             end={end}
             onClick={onNavigate}
             className={({ isActive }) =>
-              `flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-all ${
+                            `nav-item flex items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium ${
                 isActive
-                  ? "border-blue-200 bg-blue-50 text-blue-800"
+                  ? "nav-item-active"
                   : "border-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-900"
               }`
             }
