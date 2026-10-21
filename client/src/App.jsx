@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/layout/ProtectedRoute";
 import Loader from "./components/ui/Loader";
 import Login from "./pages/auth/Login";
 import Home from "./pages/citizen/Home";
+import Register from "./pages/auth/Register";
 import Dashboard from "./pages/command/Dashboard";
 import ComingSoon from "./pages/ComingSoon";
 import FamilyNetwork from "./pages/citizen/FamilyNetwork";
@@ -71,8 +72,8 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<PublicOnly><Login /></PublicOnly>} />
-      <Route path="/register" element={<Navigate to="/citizen" replace />} />
-      <Route path="/" element={<RootRedirect />} />
+
+<Route path="/register" element={<PublicOnly><Register /></PublicOnly>} />      <Route path="/" element={<RootRedirect />} />
       <Route path="/citizen/shelters" element={<Navigate to="/citizen" replace />} />
       <Route path="/command/shelters" element={<Navigate to="/command" replace />} />
 

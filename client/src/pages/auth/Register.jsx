@@ -10,7 +10,6 @@ import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
 
 const roles = [
-  { id: "citizen", label: "Citizen", icon: User },
   { id: "responder", label: "Responder", icon: LifeBuoy },
   { id: "commander", label: "Commander", icon: ShieldCheck },
 ];
@@ -18,7 +17,7 @@ const roles = [
 export default function Register() {
   const { register } = useAuth();
   const [form, setForm] = useState({
-    name: "", email: "", phone: "", password: "", role: "citizen", inviteCode: "",
+    name: "", email: "", phone: "", password: "", role: "responder", inviteCode: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -41,11 +40,11 @@ export default function Register() {
   return (
     <AuthShell>
       <GlassCard className="p-8">
-        <h2 className="font-display text-3xl font-bold">Create account</h2>
-        <p className="mb-6 mt-1 text-sm text-slate-400">Join the ArkGrid safety network</p>
+        <h2 className="font-display text-3xl font-bold">Staff registration</h2>
+        <p className="mb-6 mt-1 text-sm text-slate-400">For responders and commanders only</p>
 
         <form onSubmit={submit} className="space-y-4">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {roles.map(({ id, label, icon: Icon }) => (
               <button
                 type="button"
@@ -67,11 +66,8 @@ export default function Register() {
           <Input label="Email" icon={Mail} type="email" placeholder="you@example.com" value={form.email} onChange={set("email")} required />
           <Input label="Phone" icon={Phone} type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={set("phone")} />
           <Input label="Password" icon={Lock} type="password" placeholder="Min 6 characters" value={form.password} onChange={set("password")} required />
-
-          {form.role !== "citizen" && (
-            <Input label="Invite code" icon={KeyRound} placeholder="Provided by your organization"
-              value={form.inviteCode} onChange={set("inviteCode")} required />
-          )}
+          <Input label="Invite code" icon={KeyRound} placeholder="Provided by your organization"
+            value={form.inviteCode} onChange={set("inviteCode")} required />
 
           <Button type="submit" loading={loading} className="w-full">Create Account</Button>
         </form>
