@@ -31,11 +31,9 @@ const home = (profile) => (profile.role === "citizen" ? "/citizen" : "/command")
 function PublicOnly({ children }) {
   const { profile, loading } = useAuth();
   if (loading) return <Loader />;
-  if (profile && profile.role !== "citizen") return <Navigate to={home(profile)} replace />;
+  if (profile) return <Navigate to={home(profile)} replace />;
   return children;
 }
-
-<Route path="/" element={<Welcome />} />
 
 const live = {
   "/citizen/family": <FamilyNetwork />,
@@ -68,14 +66,13 @@ const sub = (nav, base) =>
 export default function App() {
   return (
     <Routes>
+      <Route path="/" element={<Welcome />} />
       <Route path="/login" element={<PublicOnly><Login /></PublicOnly>} />
-
-<Route path="/register" element={<PublicOnly><Register /></PublicOnly>} />      <Route path="/" element={<RootRedirect />} />
+      <Route path="/register" element={<PublicOnly><Register /></PublicOnly>} />
       <Route path="/citizen/shelters" element={<Navigate to="/citizen" replace />} />
       <Route path="/command/shelters" element={<Navigate to="/command" replace />} />
 
-      {/* Citizen area: fully public, no login */}
-           {/* Citizen area: guest session is created on the Welcome screen */}
+      {/* Citizen area: guest session is created on the Welcome screen */}
       <Route element={<ProtectedRoute roles={["citizen"]} redirectTo="/" />}>
         <Route path="/citizen" element={<AppLayout />}>
           <Route index element={<Home />} />
@@ -92,6 +89,7 @@ export default function App() {
           )}
         </Route>
       </Route>
+
       {/* Command area: login still required */}
       <Route element={<ProtectedRoute roles={["responder", "commander"]} />}>
         <Route path="/command" element={<AppLayout />}>
