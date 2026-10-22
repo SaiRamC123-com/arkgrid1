@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInAnonymously,
   signOut,
   onAuthStateChanged,
   updateProfile,
@@ -97,15 +98,32 @@ export function AuthProvider({ children }) {
     registering.current = false;
   }
 };
-
+  const continueAsCitizen = async () => {
+    registering.current = true;
+    let cred;
+    try {
+      cred = await signInAnonymously(auth);
+      const { data } = await api.post("/api/auth/profile", {
+        name: "Citizen",
+        role: "citizen",
+      });
+      await cred.user.getIdToken(true);
+      setProfile(data.user);
+    } catch (err) {
+      if (cred?.user) await signOut(auth).catch(() => {});
+      throw err;
+    } finally {
+      registering.current = false;
+    }
+  };
   const logout = async () => {
     await signOut(auth);
     setProfile(null);
   };
 
   return (
-    <AuthContext.Provider value={{ profile, loading, login, register, logout }}>
-      {children}
+<AuthContext.Provider value={{ profile, loading, login, register, logout, continueAsCitizen }}>
+    {children}
     </AuthContext.Provider>
   );
 }

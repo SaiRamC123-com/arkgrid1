@@ -29,7 +29,7 @@ exports.saveProfile = async (req, res, next) => {
     const user = {
       uid: req.user.uid,
       name: name.trim(),
-      email: req.user.email,
+           email: req.user.email || "",
       phone: phone.trim(),
       role,
       status: "unknown", // safe | unknown | sos

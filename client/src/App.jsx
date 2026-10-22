@@ -24,6 +24,7 @@ import About from "./pages/About";
 import LiveObservations from "./pages/citizen/LiveObservations";
 import HeatWave from "./pages/citizen/HeatWave";
 import DisasterHistory from "./pages/citizen/DisasterHistory";
+import Welcome from "./pages/auth/Welcome";
 
 const home = (profile) => (profile.role === "citizen" ? "/citizen" : "/command");
 
@@ -34,11 +35,7 @@ function PublicOnly({ children }) {
   return children;
 }
 
-function RootRedirect() {
-  const { profile, loading } = useAuth();
-  if (loading) return <Loader />;
-  return <Navigate to={profile ? home(profile) : "/citizen"} replace />;
-}
+<Route path="/" element={<Welcome />} />
 
 const live = {
   "/citizen/family": <FamilyNetwork />,
@@ -78,21 +75,23 @@ export default function App() {
       <Route path="/command/shelters" element={<Navigate to="/command" replace />} />
 
       {/* Citizen area: fully public, no login */}
-      <Route path="/citizen" element={<AppLayout />}>
-        <Route index element={<Home />} />
-        <Route path="observations" element={<LiveObservations />} />
-        <Route path="heat-wave" element={<HeatWave />} />
-        <Route path="disaster-history" element={<DisasterHistory />} />
-        {sub(
-          citizenNav.filter((item) => ![
-            "/citizen/observations",
-            "/citizen/heat-wave",
-            "/citizen/disaster-history",
-          ].includes(item.path)),
-          "/citizen"
-        )}
+           {/* Citizen area: guest session is created on the Welcome screen */}
+      <Route element={<ProtectedRoute roles={["citizen"]} redirectTo="/" />}>
+        <Route path="/citizen" element={<AppLayout />}>
+          <Route index element={<Home />} />
+          <Route path="observations" element={<LiveObservations />} />
+          <Route path="heat-wave" element={<HeatWave />} />
+          <Route path="disaster-history" element={<DisasterHistory />} />
+          {sub(
+            citizenNav.filter((item) => ![
+              "/citizen/observations",
+              "/citizen/heat-wave",
+              "/citizen/disaster-history",
+            ].includes(item.path)),
+            "/citizen"
+          )}
+        </Route>
       </Route>
-
       {/* Command area: login still required */}
       <Route element={<ProtectedRoute roles={["responder", "commander"]} />}>
         <Route path="/command" element={<AppLayout />}>
