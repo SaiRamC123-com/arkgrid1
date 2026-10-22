@@ -60,9 +60,12 @@ if (!getApps().length) {
   initializeApp({ credential: cert(loadServiceAccount()) });
 }
 
+const db = getFirestore();
+db.settings({ ignoreUndefinedProperties: true });
+
 module.exports = {
   admin,
-  db: getFirestore(),
+  db,
   auth: getAuth(),
   FieldValue,
   Timestamp,
